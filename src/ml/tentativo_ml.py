@@ -1,21 +1,24 @@
 import numpy as np
 import tflearn
 import tflearn.datasets.mnist as mnist
-
-from src.tools import dataset_helper
+from src.tools.dataset_helper import DatasetHelper
 
 
 def ml_sandbox():
-    X, Y, testX, testY = dataset_helper.load_data()
+    X, Y, testX, testY = DatasetHelper.load_data("res/dummy_set/training"), \
+                         DatasetHelper.generate_labels(30, DatasetHelper.LABEL_HEALTHY), \
+                         DatasetHelper.load_data("res/dummy_set/test"), \
+                         DatasetHelper.generate_labels(2, DatasetHelper.LABEL_HEALTHY)
+
 
     # Building the encoder
-    encoder = tflearn.input_data(shape=[None, 90])
-    encoder = tflearn.fully_connected(encoder, 32)
+    encoder = tflearn.input_data(shape=[None, 180])
+    encoder = tflearn.fully_connected(encoder, 64)
     encoder = tflearn.fully_connected(encoder, 8)
 
     # Building the decoder
-    decoder = tflearn.fully_connected(encoder, 32)
-    decoder = tflearn.fully_connected(decoder, 90)
+    decoder = tflearn.fully_connected(encoder, 64)
+    decoder = tflearn.fully_connected(decoder, 180)
 
     # Regression, with mean square error
     net = tflearn.regression(decoder, optimizer='adam', learning_rate=0.001,
@@ -24,7 +27,7 @@ def ml_sandbox():
     # Training the auto encoder
     model = tflearn.DNN(net, tensorboard_verbose=0)
     model.fit(X, X, n_epoch=10, validation_set=(testX, testX),
-              run_id="auto_encoder", batch_size=256)
+              run_id="auto_encoder", batch_size=5)
 
     # Encoding X[0] for test
     print("\nTest encoding of X[0]:")
