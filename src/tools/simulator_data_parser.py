@@ -8,40 +8,62 @@ class DatParser:
         self.values = np.zeros((views, views - 1), dtype=np.complex_)
         self.coordinates = np.zeros((views, views - 1, 2))
 
-    def parse_file(self, filename):
-
+    @staticmethod
+    def count_views(filename):
+        """
+        Static method for counting the number of views in a .dat file.
+        Counts the occurrences of # (hasthag) symbol in the file.
+        :param self:
+        :param filename: file to parse to count the views
+        :return: the number of views
+        """
         with open(filename) as f:
             content = f.readlines()
-            view = 0
+            views = 0
             for line in content:
                 if line[0] == "#":
-                    view += 1
-            if view != self.views:
-                raise ValueError(
-                    "Number of views parsed from file {} ({}) differs from the value this object was initialized with ({})! Malformed or wrong file?".format(
-                        filename, self.views, view))
+                    views += 1
+        return views
+
+    @staticmethod
+    def parse_file(filename):
+        """
+        Parse a specific file and stores the features (electromagnetic S values) in a ndarray.
+        :param filename: the file to parse
+        :return: a real valued, (views * (views-1) * 2, ) sized ndarray.
+        """
+        with open(filename) as f:
+            content = f.readlines()
+            views = DatParser.count_views(filename)
+
+        values = np.zeros((views, views - 1), dtype=np.complex_)
 
         with open(filename) as f:
             content = f.readlines()
-            view = -1
+            _views = -1
             view_count = 0
 
             for line in content:
                 if line[0] == "#":
-                    view += 1
+                    _views += 1
                     view_count = 0
                 else:
-                    values = line.split()
-                    self.coordinates[view, view_count, 0], self.coordinates[view, view_count, 1] = values[0], values[1]
-                    self.values[view, view_count] = float(values[2]) + float(values[3]) * 1j
+                    readvalues = line.split()
+                    # coordinates[views, view_count, 0], coordinates[views, view_count, 1] = values[0], values[1]
+                    values[_views, view_count] = float(readvalues[2]) + float(readvalues[3]) * 1j
                     view_count += 1
 
-    def flatten(self):
-        out = np.zeros(self.views * (self.views - 1) * 2)
+        return DatParser.__flatten(views, values)
+
+    @staticmethod
+    def __flatten(views, values):
+
+        out = np.zeros(views * (views - 1) * 2)
+
 
         i = 0
-        for view in range(self.views):
-            for value in self.values[view, :]:
+        for view in range(views):
+            for value in values[view, :]:
                 out[i] = value.real
                 out[i + 1] = value.imag
                 i += 2

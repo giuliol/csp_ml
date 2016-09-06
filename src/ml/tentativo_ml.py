@@ -2,9 +2,11 @@ import numpy as np
 import tflearn
 import tflearn.datasets.mnist as mnist
 
+from src.tools import dataset_helper
+
 
 def ml_sandbox():
-    X, Y, testX, testY = mnist.load_data(one_hot=True)
+    X, Y, testX, testY = dataset_helper.load_data()
 
     # Building the encoder
     encoder = tflearn.input_data(shape=[None, 90])
