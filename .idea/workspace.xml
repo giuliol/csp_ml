@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-Testato ed implementata classe Autoencoder">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-Modificato per leggere mag. e fase&#10;-gitignore">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/simulator_data_parser.py" afterPath="$PROJECT_DIR$/src/tools/simulator_data_parser.py" />
     </list>
     <ignored path="CSP_ML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,8 +37,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state relative-caret-position="108">
+              <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -122,13 +121,13 @@
         <option value="$PROJECT_DIR$/src/common/simulator_data_parser.py" />
         <option value="$PROJECT_DIR$/src/ml/notebook_sandbox.ipynb" />
         <option value="$PROJECT_DIR$/src/tools/dataset_helper.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ml/tentativo_ml.py" />
         <option value="$PROJECT_DIR$/src/test_units/test.ipynb" />
         <option value="$PROJECT_DIR$/src/sandbox.py" />
         <option value="$PROJECT_DIR$/src/test_units/Tests.py" />
         <option value="$PROJECT_DIR$/src/ml/autoencoder.py" />
         <option value="$PROJECT_DIR$/src/tools/simulator_data_parser.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -585,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473250805390</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-Modificato per leggere mag. e fase&#10;-gitignore">
+      <created>1473254188026</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1473254188026</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -656,7 +662,8 @@
     <MESSAGE value="-refactoring e piccole modifiche&#10;-helper per dataset interi" />
     <MESSAGE value="-Adattato una test unit, sembra andare senza errori sul testset dummy." />
     <MESSAGE value="-Testato ed implementata classe Autoencoder" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Testato ed implementata classe Autoencoder" />
+    <MESSAGE value="-Modificato per leggere mag. e fase&#10;-gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Modificato per leggere mag. e fase&#10;-gitignore" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1030,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="108">
+          <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
           <folding />
         </state>
       </provider>
