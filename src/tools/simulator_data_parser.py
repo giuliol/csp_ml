@@ -50,7 +50,9 @@ class DatParser:
                 else:
                     readvalues = line.split()
                     # coordinates[views, view_count, 0], coordinates[views, view_count, 1] = values[0], values[1]
-                    values[_views, view_count] = float(readvalues[2]) + float(readvalues[3]) * 1j
+                    #
+                    # Reads magnitude(3) and phase(4)
+                    values[_views, view_count] = float(readvalues[4]) + float(readvalues[5]) * 1j
                     view_count += 1
 
         return DatParser.__flatten(views, values)
