@@ -1,5 +1,5 @@
 from src.tools import simulator_data_parser
-from src.ml import tentativo_ml, tflearn_autoencoder
+from src.ml import tentativo_ml, tflearn_autoencoder, autoencoder
 from src.tools.dataset_helper import DatasetHelper
 
 
@@ -22,8 +22,20 @@ def tensorflow_test():
 
 
 def _machine_learning_sandbox():
-    tentativo_ml.ml_sandbox()
+    pred, X0 = tentativo_ml.ml_sandbox()
+
     return 0
+
+
+def autoencoder_test():
+    ae = autoencoder.Autoencoder()
+
+    X, Y, testX, testY = DatasetHelper.load_data("res/dummy_set/training"), \
+                         DatasetHelper.generate_labels(30, DatasetHelper.LABEL_HEALTHY), \
+                         DatasetHelper.load_data("res/dummy_set/test"), \
+                         DatasetHelper.generate_labels(2, DatasetHelper.LABEL_HEALTHY)
+
+    ae.train_net(X, Y, testX, testY)
 
 
 def dataset_helper_test():

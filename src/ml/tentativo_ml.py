@@ -33,10 +33,16 @@ def ml_sandbox():
     print("\nTest encoding of X[0]:")
     # New model, re-using the same session, for weights sharing
     encoding_model = tflearn.DNN(encoder, session=model.session)
-    print(encoding_model.predict([X[0]]))
+    pred = encoding_model.predict([X[0]])
+    print(pred)
 
     # Testing the image reconstruction on new data (test set)
     print("\nVisualizing results after being encoded and decoded:")
+    print(X[0])
+
+    return pred, X[0]
+
+    # print("pred.shape={}, X[0].shape={}".format(pred.shape,X[0].shape))
     testX = tflearn.data_utils.shuffle(testX)[0]
 
     # Applying encode and decode over test set
