@@ -14,6 +14,10 @@ class Autoencoder_2Layers:
         return self.__trained
 
     def __init__(self, features, layer1_size, layer2_size):
+
+        self.l1_size = layer1_size
+        self.l2_size = layer2_size
+
         # Building the encoder
         self.encoder = tflearn.input_data(shape=[None, features])
         self.encoder = tflearn.fully_connected(self.encoder, layer1_size)
@@ -35,9 +39,6 @@ class Autoencoder_2Layers:
         self.healty_prototype = 0
         self.__trained = True
 
-
-        # TODO: creare e calcolare prototipo di healthy.
-
     def project(self, sample):
         if self.is_trained():
             encoding_model = tflearn.DNN(self.encoder, session=self.model.session)
@@ -46,6 +47,18 @@ class Autoencoder_2Layers:
         ValueError("Encoding model not yet learned!")
         return 0
 
+    def compupte_class_center(self, set):
+        size = len(set)
+        center = np.zeros((self.l2_size))
+
+        i = 0
+        for sample in set:
+            proj = self.project(sample).flatten()
+            center = center + proj / 30
+            i += 1
+            if i > 30: break
+
+        return center
 
 def classify(self, sample):
     return True
