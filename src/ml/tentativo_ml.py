@@ -5,9 +5,9 @@ from src.tools.dataset_helper import DatasetHelper
 
 
 def ml_sandbox():
-    X, Y, testX, testY = DatasetHelper.load_data("res/dummy_set/training"), \
+    X, Y, testX, testY = DatasetHelper.load_data("res/dummy/training"), \
                          DatasetHelper.generate_labels(30, DatasetHelper.LABEL_HEALTHY), \
-                         DatasetHelper.load_data("res/dummy_set/test"), \
+                         DatasetHelper.load_data("res/dummy/test"), \
                          DatasetHelper.generate_labels(2, DatasetHelper.LABEL_HEALTHY)
 
 
