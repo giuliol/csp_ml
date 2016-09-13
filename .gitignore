@@ -84,10 +84,10 @@ celerybeat-schedule
 venv/
 ENV/
 
-# Spyder project settings
+# Spyder get_encoding settings
 .spyderproject
 
-# Rope project settings
+# Rope get_encoding settings
 .ropeproject
 
 .idea

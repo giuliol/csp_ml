@@ -1,5 +1,5 @@
 from src.tools import simulator_data_parser
-from src.ml import tentativo_ml, tflearn_autoencoder, autoencoder
+from src.ml import tentativo_ml, tflearn_autoencoder, autoencoder, mlp
 from src.tools.dataset_helper import DatasetHelper
 
 
@@ -37,7 +37,7 @@ def autoencoder_test():
                                                            DatasetHelper.generate_labels(300,
                                                                                          DatasetHelper.LABEL_HEALTHY)
 
-    ae.train_net(training_set, training_labels, test_set, test_labels)
+    ae.train(training_set, training_labels, test_set, test_labels)
 
 
 def dataset_helper_test():
@@ -54,6 +54,49 @@ def dataset_helper_test():
     print(labels_stroke[1:10, :])
 
     return 0
+
+
+def __load_set3():
+    import numpy as np
+    healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_data(
+        "res/set_2/healthy/training"), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               400,
+                                                                                               DatasetHelper.LABEL_HEALTHY), \
+                                                                                           DatasetHelper.load_data(
+                                                                                               "res/set_2/healthy/test"), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               100,
+                                                                                               DatasetHelper.LABEL_HEALTHY)
+
+    stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_data(
+        "res/set_2/stroke/training"), \
+                                                                                       DatasetHelper.generate_labels(
+                                                                                           400,
+                                                                                           DatasetHelper.LABEL_STROKE), \
+                                                                                       DatasetHelper.load_data(
+                                                                                           "res/set_2/stroke/test"), \
+                                                                                       DatasetHelper.generate_labels(
+                                                                                           100,
+                                                                                           DatasetHelper.LABEL_STROKE)
+
+    training_set = np.row_stack((healthy_training_set, stroke_training_set))
+    test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+    training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+    test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+
+    return training_set, training_labels, test_set, test_labels
+
+
+def __load_set2():
+    training_set, training_labels, test_set, test_labels = DatasetHelper.load_data("res/set_2/healthy/training"), \
+                                                           DatasetHelper.generate_labels(400,
+                                                                                         DatasetHelper.LABEL_HEALTHY), \
+                                                           DatasetHelper.load_data("res/set_2/healthy/test"), \
+                                                           DatasetHelper.generate_labels(100,
+                                                                                         DatasetHelper.LABEL_HEALTHY)
+    return training_set, training_labels, test_set, test_labels
 
 
 def __load_set1():
@@ -76,7 +119,95 @@ def __load_dummy():
     return training_set, training_labels, test_set, test_labels
 
 
-def classification_test():
+def mlp_classification_test():
+    """"""
+    """
+    Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
+    ha dimensione 16*15*2 (modulo e fase)
+    256 e 64 sono le dimensioni dei due layer dell'autoencoder
+    """
+    mlperc = mlp.MultilayerPerceptron(480, 2)
+
+    """
+    Carico il dataset. Uso due piccoli helper definiti sopra
+    """
+    training_set, training_labels, test_set, test_labels = __load_set3()
+
+    """
+    Addestro l'autoencoder sui dati di cervello sano: 128 è il batch size, dove batch è il training batch
+    """
+    # mlperc.train(training_set, training_labels, test_set, test_labels, 120)
+    # mlperc.save("res/mlp.model.dat")
+    mlperc.load("res/mlp.model.dat")
+
+    print("evaluating...")
+
+    correct_decisions = 0
+    missed_detections = 0
+    false_alarms = 0
+
+    stroke_set = DatasetHelper.load_data("res/set_2/stroke/test")
+    for i, sample in enumerate(stroke_set):
+        scores = mlperc.classify(sample)
+        if scores[0][0] > scores[0][1]:
+            # print("Stroke!")
+            correct_decisions += 1
+        else:
+            # print("Healthy")
+            missed_detections += 1
+
+    healthy_set = DatasetHelper.load_data("res/set_2/healthy/test")
+    for i, sample in enumerate(healthy_set):
+        scores = mlperc.classify(sample)
+        if scores[0][0] > scores[0][1]:
+            # print("Stroke!")
+            false_alarms += 1
+        else:
+            # print("Healthy")
+            correct_decisions += 1
+
+    total = (len(healthy_set) + len(stroke_set))
+    correct_decisions /= total
+    missed_detections /= total
+    false_alarms /= total
+    print("correct decisions:{} false alarms:{} missed detections:{}".format(correct_decisions, false_alarms,
+                                                                             missed_detections))
+
+    """
+
+    """
+
+    TH = 0.05
+
+    stroke_set = DatasetHelper.load_data("res/set_2/stroke/test")
+    for i, sample in enumerate(stroke_set):
+        scores = mlperc.classify(sample)
+        if scores[0][0] > TH:
+            # print("Stroke!")
+            correct_decisions += 1
+        else:
+            # print("Healthy")
+            missed_detections += 1
+
+    healthy_set = DatasetHelper.load_data("res/set_2/healthy/test")
+    for i, sample in enumerate(healthy_set):
+        scores = mlperc.classify(sample)
+        if scores[0][0] > TH:
+            # print("Stroke!")
+            false_alarms += 1
+        else:
+            # print("Healthy")
+            correct_decisions += 1
+
+    total = (len(healthy_set) + len(stroke_set))
+    correct_decisions /= total
+    missed_detections /= total
+    false_alarms /= total
+    print("correct decisions:{} false alarms:{} missed detections:{}".format(correct_decisions, false_alarms,
+                                                                             missed_detections))
+
+
+def autoencoder_classification_test():
     import numpy as np
 
     """
@@ -84,36 +215,55 @@ def classification_test():
     ha dimensione 16*15*2 (modulo e fase)
     256 e 64 sono le dimensioni dei due layer dell'autoencoder
     """
-    ae = autoencoder.Autoencoder_2Layers(480, 256, 64)
+    # ae = autoencoder.Autoencoder( features, [dimensioni dei vari layer, a piacere])
+    ae = autoencoder.Autoencoder(480, 256, 64)
 
     """
     Carico il dataset. Uso due piccoli helper definiti sopra
     """
-    training_set, training_labels, test_set, test_labels = __load_set1()
+    training_set, training_labels, test_set, test_labels = __load_set2()
 
     """
     Addestro l'autoencoder sui dati di cervello sano: 128 è il batch size, dove batch è il training batch
     """
-    ae.train_net(training_set, training_labels, test_set, test_labels, 128)
+    ae.train(training_set, training_labels, test_set, test_labels, 128)
 
     """
     Carico il dataset con stroke
     """
-    stroke_set = DatasetHelper.load_data("res/set_1/stroke")
+    stroke_set = DatasetHelper.load_data("res/set_2/stroke/training")
 
-    # """
-    # Versione media delle distanze dal control set (sani)
-    # Calcolo la proiezione di un sample stroke e uno healthy sul sottospazio dell'autoencoder
-    # """
-    # stroke_proj = ae.project(stroke_set[0, :])
-    # healthy_proj = ae.project(test_set[0, :])
+    """
+    Versione con loss come metrica di bontà
+    """
+
+    # avg. loss su control set
+    avg_healthy_loss = 0
+    for i, sample in enumerate(training_set):
+        avg_healthy_loss += ae.get_encoding_error(sample)
+    avg_healthy_loss /= len(training_set)
+
+    # avg. loss su stroke set
+    avg_stroke_loss = 0
+    for i, sample in enumerate(stroke_set):
+        avg_stroke_loss += ae.get_encoding_error(sample)
+    avg_stroke_loss /= len(stroke_set)
+
+    print("Avg. Healthy loss={}, avg. Stroke loss={}".format(avg_healthy_loss, avg_stroke_loss))
+
+    """
+    Versione media delle distanze dal control set (sani)
+    Calcolo la proiezione di un sample stroke e uno healthy sul sottospazio dell'autoencoder
+    """
+    # stroke_proj = ae.get_encoding(stroke_set[0, :])
+    # healthy_proj = ae.get_encoding(test_set[0, :])
     #
     # stroke_proj_distance = 0.0
     # healthy_proj_distance = 0.0
     #
     # c = 0
     # for sample in training_set:
-    #     proj = ae.project(sample)
+    #     proj = ae.get_encoding(sample)
     #     stroke_proj_distance += np.linalg.norm(stroke_proj - proj) / 30
     #     healthy_proj_distance += np.linalg.norm(healthy_proj - proj) / 30
     #     c += 1
@@ -127,27 +277,67 @@ def classification_test():
     """
     Versione con centro della classe
     """
-    MAXITER = 20
-    print("computing class center...")
-    center = ae.compupte_class_center(training_set)
-
-    print("computing average stroke distance...")
-    i = 0
-    d = 0.0
-    for sample in stroke_set:
-        proj = ae.project(sample)
-        d += np.linalg.norm(proj - center) / MAXITER
-        i += 1
-        if i > MAXITER: break
-
-    print("Avg. stroke distance={}".format(d))
-    print("computing average control set distance...")
-    i = 0
-    d = 0.0
-    for sample in training_set:
-        proj = ae.project(sample)
-        d += np.linalg.norm(proj - center) / MAXITER
-        i += 1
-        if i > MAXITER: break
-
-    print("Avg. healthy distance={}".format(d))
+    # MAXITER = 20
+    # print("computing class center...")
+    # center = ae.compute_class_center(training_set, 50)
+    #
+    # print("computing average stroke distance...")
+    # d = 0.0
+    # for i, sample in enumerate(stroke_set):
+    #     proj = ae.get_encoding(sample)
+    #     _d = d
+    #     d += np.linalg.norm(proj - center)
+    #     if i > 1:
+    #         diff = np.abs(d / i - _d / (i + 1))
+    #         print("Avg. stroke distance moved {}".format(diff))
+    #         if (i > MAXITER) or (diff < 3): break
+    #
+    # stroke_d = d / MAXITER
+    #
+    # print("Avg. stroke distance={}".format(stroke_d))
+    # print("computing average control set distance...")
+    # d = 0.0
+    # for i, sample in enumerate(test_set):
+    #     proj = ae.get_encoding(sample)
+    #     _d = d
+    #     d += np.linalg.norm(proj - center)
+    #     if i > 1:
+    #         diff = np.abs(d / i - _d / (i + 1))
+    #         print("Avg. healthy distance moved {}".format(diff))
+    #         if (i > MAXITER) or (diff < 3): break
+    #
+    # healthy_d = d / MAXITER
+    # THRESH = stroke_d - (stroke_d - healthy_d) / 2
+    #
+    # print("Avg. healthy distance={}".format(healthy_d))
+    # print("Test classification (THRESH={}):".format(THRESH))
+    #
+    # correct_detections = 0.0
+    # missed_detections = 0.0
+    # false_alarms = 0.0
+    #
+    # i = 0
+    # for sample in stroke_set:
+    #     proj = ae.get_encoding(sample)
+    #     if np.linalg.norm(proj - center) > THRESH:
+    #         correct_detections += 1
+    #     else:
+    #         missed_detections += 1
+    #     i += 1
+    #     if i >= MAXITER: break
+    #
+    # i = 0
+    # for sample in test_set:
+    #     proj = ae.get_encoding(sample)
+    #     if np.linalg.norm(proj - center) > THRESH:
+    #         false_alarms += 1
+    #     else:
+    #         correct_detections += 1
+    #     i += 1
+    #     if i >= MAXITER: break
+    #
+    # correct_detections /= 2 * MAXITER
+    # false_alarms /= 2 * MAXITER
+    # missed_detections /= 2 * MAXITER
+    # print("Correct detections: {}\nFalse alarms: {}\nMissed Detections: {}".format(correct_detections, false_alarms,
+    #                                                                                missed_detections))
