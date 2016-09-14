@@ -123,22 +123,21 @@ def mlp_classification_test():
     """"""
     """
     Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
-    ha dimensione 16*15*2 (modulo e fase)
-    256 e 64 sono le dimensioni dei due layer dell'autoencoder
+    ha dimensione 480=16*15*2 (modulo e fase)
     """
-    mlperc = mlp.MultilayerPerceptron(480, 2)
+    mlperc = mlp.MultilayerPerceptron(480, 2, 64, 16)
 
     """
-    Carico il dataset. Uso due piccoli helper definiti sopra
+    Carico il dataset. Uso helper definito sopra
     """
     training_set, training_labels, test_set, test_labels = __load_set3()
 
     """
-    Addestro l'autoencoder sui dati di cervello sano: 128 è il batch size, dove batch è il training batch
+    Addestro l'autoencoder sui dati di cervello sano: 60 il numero di epoch (durata del training)
     """
-    # mlperc.train(training_set, training_labels, test_set, test_labels, 120)
-    # mlperc.save("res/mlp.model.dat")
-    mlperc.load("res/mlp.model.dat")
+    # mlperc.train(training_set, training_labels, test_set, test_labels, 300)
+    # mlperc.save("res/saved_nns/mlp.64_16.dat")
+    mlperc.load("res/saved_nns/mlp.64_16.dat")
 
     print("evaluating...")
 
@@ -149,21 +148,20 @@ def mlp_classification_test():
     stroke_set = DatasetHelper.load_data("res/set_2/stroke/test")
     for i, sample in enumerate(stroke_set):
         scores = mlperc.classify(sample)
+        print(scores)
         if scores[0][0] > scores[0][1]:
-            # print("Stroke!")
             correct_decisions += 1
         else:
-            # print("Healthy")
             missed_detections += 1
 
+    print("=======================")
     healthy_set = DatasetHelper.load_data("res/set_2/healthy/test")
     for i, sample in enumerate(healthy_set):
         scores = mlperc.classify(sample)
+        print(scores)
         if scores[0][0] > scores[0][1]:
-            # print("Stroke!")
             false_alarms += 1
         else:
-            # print("Healthy")
             correct_decisions += 1
 
     total = (len(healthy_set) + len(stroke_set))
@@ -173,38 +171,7 @@ def mlp_classification_test():
     print("correct decisions:{} false alarms:{} missed detections:{}".format(correct_decisions, false_alarms,
                                                                              missed_detections))
 
-    """
 
-    """
-
-    TH = 0.05
-
-    stroke_set = DatasetHelper.load_data("res/set_2/stroke/test")
-    for i, sample in enumerate(stroke_set):
-        scores = mlperc.classify(sample)
-        if scores[0][0] > TH:
-            # print("Stroke!")
-            correct_decisions += 1
-        else:
-            # print("Healthy")
-            missed_detections += 1
-
-    healthy_set = DatasetHelper.load_data("res/set_2/healthy/test")
-    for i, sample in enumerate(healthy_set):
-        scores = mlperc.classify(sample)
-        if scores[0][0] > TH:
-            # print("Stroke!")
-            false_alarms += 1
-        else:
-            # print("Healthy")
-            correct_decisions += 1
-
-    total = (len(healthy_set) + len(stroke_set))
-    correct_decisions /= total
-    missed_detections /= total
-    false_alarms /= total
-    print("correct decisions:{} false alarms:{} missed detections:{}".format(correct_decisions, false_alarms,
-                                                                             missed_detections))
 
 
 def autoencoder_classification_test():
