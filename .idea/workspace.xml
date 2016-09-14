@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-aggiunto set_2">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat.meta" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.model.dat.meta" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.model_sigmoid.dat.meta" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/checkpoint" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.model.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.model_sigmoid.dat" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/bren.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ml/tentativo_ml.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ml/tflearn_autoencoder.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sandbox.py" afterPath="" />
+    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/set_3/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/set_3/healthy_test.tar.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/set_3/healthy_training.tar.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/set_3/stroke_test.tar.gz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/set_3/stroke_training.tar.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat.meta" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat.meta" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO" afterPath="$PROJECT_DIR$/TODO" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat" afterPath="$PROJECT_DIR$/res/saved_nns/mlp.64_16.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ml/mlp.py" afterPath="$PROJECT_DIR$/src/ml/mlp.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_units/Tests.py" afterPath="$PROJECT_DIR$/src/test_units/Tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/dataset_helper.py" afterPath="$PROJECT_DIR$/src/tools/dataset_helper.py" />
     </list>
     <ignored path="CSP_ML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,24 +38,16 @@
       <file leaf-file-name="Tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test_units/Tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="-89">
+              <caret line="179" column="35" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataset_helper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -68,31 +57,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TODO" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TODO" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TODO">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" column="36" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dnn.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python3.4/dist-packages/tflearn/models/dnn.py">
+      <file leaf-file-name="mlp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="autoencoder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ml/autoencoder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="16" column="45" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="414">
+              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -104,19 +83,19 @@
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mlp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
+      <file leaf-file-name="dataset_helper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
+            <state relative-caret-position="416">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#53#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,7 +133,6 @@
         <option value="$PROJECT_DIR$/src/common/Tools.py" />
         <option value="$PROJECT_DIR$/src/common/simulator_data_parser.py" />
         <option value="$PROJECT_DIR$/src/ml/notebook_sandbox.ipynb" />
-        <option value="$PROJECT_DIR$/src/tools/dataset_helper.py" />
         <option value="$PROJECT_DIR$/src/ml/tentativo_ml.py" />
         <option value="$PROJECT_DIR$/src/test_units/test.ipynb" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -163,12 +141,13 @@
         <option value="$PROJECT_DIR$/src/nii_tool.py" />
         <option value="$PROJECT_DIR$/src/prove.ipynb" />
         <option value="$PROJECT_DIR$/src/ml/autoencoder.py" />
-        <option value="$PROJECT_DIR$/src/ml/mlp.py" />
-        <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/src/test_units/Tests.py" />
         <option value="$PROJECT_DIR$/src/sandbox.py" />
-        <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/README" />
+        <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/tools/dataset_helper.py" />
+        <option value="$PROJECT_DIR$/src/ml/mlp.py" />
+        <option value="$PROJECT_DIR$/src/test_units/Tests.py" />
+        <option value="$PROJECT_DIR$/TODO" />
       </list>
     </option>
   </component>
@@ -295,7 +274,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_units" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="set_3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -619,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1473849432871</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="-README ben fatto&#10;-aggiunte reti neurali già addestrate">
+      <created>1473850530727</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1473850530727</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -697,7 +737,8 @@
     <MESSAGE value="-refactoring&#10;-Qualche tweak&#10;-Aggiunto multilayer perceptron che funziona abbastanza" />
     <MESSAGE value="-implementato mlp con n. layer arbitrario" />
     <MESSAGE value="-aggiunto set_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="-aggiunto set_2" />
+    <MESSAGE value="-README ben fatto&#10;-aggiunte reti neurali già addestrate" />
+    <option name="LAST_COMMIT_MESSAGE" value="-README ben fatto&#10;-aggiunte reti neurali già addestrate" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -710,13 +751,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1072">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/simulator_data_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -735,7 +769,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -764,7 +800,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -793,7 +831,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -955,24 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sandbox.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -984,24 +1006,36 @@
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test_units/Tests.py">
+    <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/-1247971765/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        <state relative-caret-position="437">
+          <caret line="2860" column="27" selection-start-line="2860" selection-start-column="27" selection-end-line="2860" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="416">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,6 +1043,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_units/Tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="179" column="35" selection-start-line="179" selection-start-column="35" selection-end-line="179" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding />
         </state>
       </provider>

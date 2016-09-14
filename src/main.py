@@ -6,4 +6,5 @@ from src.test_units import Tests
 # Tests.dataset_helper_test()
 # Tests.autoencoder_test()
 # Tests.autoencoder_classification_test()
+
 Tests.mlp_classification_test()

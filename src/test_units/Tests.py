@@ -45,6 +45,39 @@ def dataset_helper_test():
     return 0
 
 
+def __load_set4():
+    import numpy as np
+
+    healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_archive(
+        "res/set_3/healthy_training.tar.gz"), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               700,
+                                                                                               DatasetHelper.LABEL_HEALTHY), \
+                                                                                           DatasetHelper.load_archive(
+                                                                                               "res/set_3/healthy_test.tar.gz"), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               300,
+                                                                                               DatasetHelper.LABEL_HEALTHY)
+
+    stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_archive(
+        "res/set_3/stroke_training.tar.gz"), \
+                                                                                       DatasetHelper.generate_labels(
+                                                                                           700,
+                                                                                           DatasetHelper.LABEL_STROKE), \
+                                                                                       DatasetHelper.load_archive(
+                                                                                           "res/set_3/stroke_test.tar.gz"), \
+                                                                                       DatasetHelper.generate_labels(
+                                                                                           300,
+                                                                                           DatasetHelper.LABEL_STROKE)
+
+    training_set = np.row_stack((healthy_training_set, stroke_training_set))
+    test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+    training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+    test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+    return training_set, training_labels, test_set, test_labels
+
+
 def __load_set3():
     import numpy as np
     healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_data(
@@ -119,10 +152,10 @@ def mlp_classification_test():
     """
     Carico il dataset. Uso helper definito sopra
     """
-    training_set, training_labels, test_set, test_labels = __load_set3()
+    training_set, training_labels, test_set, test_labels = __load_set4()
 
     """
-    Addestro l'autoencoder sui dati di cervello sano: 60 il numero di epoch (durata del training)
+    Addestro l'autoencoder sui dati di cervello sano:
     """
     # mlperc.train(training_set, training_labels, test_set, test_labels, 300)
     # mlperc.save("res/saved_nns/mlp.64_16.dat")
@@ -134,38 +167,34 @@ def mlp_classification_test():
     missed_detections = 0
     false_alarms = 0
 
-    stroke_set = DatasetHelper.load_data("res/set_2/stroke/test")
-    for i, sample in enumerate(stroke_set):
-        scores = mlperc.classify(sample)
-        print(scores)
-        if scores[0][0] > scores[0][1]:
-            correct_decisions += 1
-        else:
+    stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz")
+    # stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test")
+    for sample in stroke_test_set:
+        if mlperc.classify(sample):
             missed_detections += 1
-
-    print("=======================")
-    healthy_set = DatasetHelper.load_data("res/set_2/healthy/test")
-    for i, sample in enumerate(healthy_set):
-        scores = mlperc.classify(sample)
-        print(scores)
-        if scores[0][0] > scores[0][1]:
-            false_alarms += 1
         else:
             correct_decisions += 1
 
-    total = (len(healthy_set) + len(stroke_set))
+    healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz")
+    # healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test")
+    for sample in healthy_test_set:
+        if mlperc.classify(sample):
+            correct_decisions += 1
+        else:
+            false_alarms += 1
+
+    total = (len(healthy_test_set) + len(stroke_test_set))
     correct_decisions /= total
     missed_detections /= total
     false_alarms /= total
-    print("correct decisions:{} false alarms:{} missed detections:{}".format(correct_decisions, false_alarms,
-                                                                             missed_detections))
-
-
+    print("Total {} test samples.\nCorrect decisions:{} false alarms:{} missed detections:{}".format(total,
+                                                                                                     correct_decisions,
+                                                                                                     false_alarms,
+                                                                                                     missed_detections))
 
 
 def autoencoder_classification_test():
-    import numpy as np
-
+    """"""
     """
     Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
     ha dimensione 16*15*2 (modulo e fase)

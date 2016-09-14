@@ -1,7 +1,6 @@
 Allo stato attuale, il miglior risultato è ottenibile con il multilayer perceptron.
 
-    correct decisions:0.86 false alarms:0.14 missed detections:0.0
-
+    Correct decisions:0.9733333333333334 false alarms:0.018333333333333333 missed detections:0.008333333333333333
 
 
 Idee per migliorare:

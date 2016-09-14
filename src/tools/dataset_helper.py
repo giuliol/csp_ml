@@ -1,6 +1,9 @@
 from src.tools.simulator_data_parser import DatParser
 import numpy as np
 import os
+import tarfile
+import random
+import string
 
 
 class DatasetHelper:
@@ -10,12 +13,31 @@ class DatasetHelper:
     # x_labels:   ( #campioni, #classi )
     #
 
+    LABEL_STROKE = 1
+    LABEL_HEALTHY = 0
+
     def __init__(self, path):
         self.path = path
         self.dummy = 0
 
     def foo(self):
         print("bar")
+
+    @staticmethod
+    def load_archive(filename):
+        """
+        Loads a dataset archive. Reads the filename provided as parameter and returns the dataset as ndarray.
+        The returned dataset dimensions are (#samples, #features)
+        :param filename:
+        :return:
+        """
+        char_set = string.ascii_uppercase + string.digits
+        with tarfile.open(filename) as tar:
+            path = "tmp/{}/".format(random.sample(char_set * 6, 6))
+            tar.extractall(path)
+            dataset = DatasetHelper.load_data(path)
+            os.system("rm {} -rf".format(path))
+            return dataset
 
     @staticmethod
     def load_data(path):
@@ -45,9 +67,6 @@ class DatasetHelper:
                 dataset = np.row_stack((dataset, DatParser.parse_file(filepath)))
 
         return dataset
-
-    LABEL_STROKE = 1
-    LABEL_HEALTHY = 0
 
     @staticmethod
     def generate_labels(samples, label):
