@@ -1,1 +1,26 @@
-Vedere la funzione classification_test() in src/test_units/Tests.py
+                    Machine learning su simulazioni MOM
+
+STRUTTURA PROGETTO:
+
+    res/
+        dummy/              - dataset dummy, usato in qualche test preliminare
+        saved_nns/          - reti neurali salvate
+        set_1/              - primo dataset, solo rumore AWG a valle del MOM.
+        set_2/              - secondo dataset,  AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop
+    src/
+        ml/                 - classi per machine learning
+        test_units/         -
+        tools/              - utilità varie, gestire dataset
+        main.py
+    README                  - questo file
+    TODO                    - cose da aggiungere e idee per miglioramenti
+
+
+
+QUICK START:
+
+Vedere in src/test_units/Tests.py le funzioni
+
+classification_test() - prova con autoencoder
+mlp_classification_test() - prova con multilayer perceptron
+

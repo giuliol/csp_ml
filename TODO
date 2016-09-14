@@ -1,0 +1,13 @@
+Allo stato attuale, il miglior risultato è ottenibile con il multilayer perceptron.
+
+    correct decisions:0.86 false alarms:0.14 missed detections:0.0
+
+
+
+Idee per migliorare:
+
+- Implementare una feature di simmetria.
+    Es. trasmette antenna posizionata in linea sull'asse di simmetria cerebrale. I valori registrati dalle
+    antenne RX dovrebbero essere simili a coppie => considerare metà valori delle rimanenti antenne, ricavati
+    tramite differenze tra antenne "facing" attraverso l'asse di simmetria, cioè la cui linea che le congiunge
+    è ortogonale all'asse di simmetria.

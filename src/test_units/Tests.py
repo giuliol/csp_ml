@@ -1,5 +1,5 @@
 from src.tools import simulator_data_parser
-from src.ml import tentativo_ml, tflearn_autoencoder, autoencoder, mlp
+from src.ml import autoencoder, mlp
 from src.tools.dataset_helper import DatasetHelper
 
 
@@ -13,17 +13,6 @@ def tools_test():
     print(vals)
     print(sv.flatten())
     print("------- TEST   END -------")
-    return 0
-
-
-def tensorflow_test():
-    tflearn_autoencoder.tflearn_tutorial()
-    return 0
-
-
-def _machine_learning_sandbox():
-    pred, X0 = tentativo_ml.ml_sandbox()
-
     return 0
 
 
