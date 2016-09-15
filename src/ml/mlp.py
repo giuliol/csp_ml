@@ -40,19 +40,17 @@ class MultilayerPerceptron:
 
         self.model = tflearn.DNN(self.net, tensorboard_verbose=0)
 
-    def train(self, training_set, training_labels, test_set, test_labels, epochs):
+    def train(self, training_set, training_labels, epochs):
         """
         Train the network with the provided train and test sets.
         Labels must be provided as one-hot vectors.
         :param training_set: the training set
         :param training_labels: the training labels
-        :param test_set: the test set
-        :param test_labels: the test labels
         :param epochs: Duration of training (in epochs).
         :return:
         """
         # Training
-        self.model.fit(training_set, training_labels, n_epoch=epochs, validation_set=(test_set, test_labels),
+        self.model.fit(training_set, training_labels, n_epoch=epochs, validation_set=0.2,
                        show_metric=True, run_id="dense_model")
 
     def save(self, filename):

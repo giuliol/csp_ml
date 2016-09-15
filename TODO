@@ -2,6 +2,9 @@ Allo stato attuale, il miglior risultato è ottenibile con il multilayer percept
 
     Correct decisions:0.9733333333333334 false alarms:0.018333333333333333 missed detections:0.008333333333333333
 
+ Con symmetry.dat:
+    Correct decisions:0.975 false alarms:0.0 missed detections:0.025
+
 
 Idee per migliorare:
 

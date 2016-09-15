@@ -24,7 +24,7 @@ class DatasetHelper:
         print("bar")
 
     @staticmethod
-    def load_archive(filename):
+    def load_archive(filename, symmetry):
         """
         Loads a dataset archive. Reads the filename provided as parameter and returns the dataset as ndarray.
         The returned dataset dimensions are (#samples, #features)
@@ -35,12 +35,12 @@ class DatasetHelper:
         with tarfile.open(filename) as tar:
             path = "tmp/{}/".format(random.sample(char_set * 6, 6))
             tar.extractall(path)
-            dataset = DatasetHelper.load_data(path)
+            dataset = DatasetHelper.load_data(path, symmetry)
             os.system("rm {} -rf".format(path))
             return dataset
 
     @staticmethod
-    def load_data(path):
+    def load_data(path, symmetry):
         """
         Loads a dataset. Reads into the path provided as parameter and returns the dataset as ndarray.
         The returned dataset dimensions are (#samples, #features)
@@ -61,10 +61,16 @@ class DatasetHelper:
             if views_no != number_of_views:
                 raise ValueError("Mismatch in number of views in {}! check .dat files!".format(path))
             if first:
-                dataset = DatParser.parse_file(filepath)
+                if symmetry:
+                    dataset = DatParser.parse_file_and_compute_symmetry(filepath)
+                else:
+                    dataset = DatParser.parse_file(filepath)
                 first = False
             else:
-                dataset = np.row_stack((dataset, DatParser.parse_file(filepath)))
+                if symmetry:
+                    dataset = np.row_stack((dataset, DatParser.parse_file_and_compute_symmetry(filepath)))
+                else:
+                    dataset = np.row_stack((dataset, DatParser.parse_file(filepath)))
 
         return dataset
 

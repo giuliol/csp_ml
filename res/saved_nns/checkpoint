@@ -1,2 +1,2 @@
-model_checkpoint_path: "mlp.64_16.dat"
-all_model_checkpoint_paths: "mlp.64_16.dat"
+model_checkpoint_path: "symmetry_64_16.dat"
+all_model_checkpoint_paths: "symmetry_64_16.dat"

@@ -7,4 +7,5 @@ from src.test_units import Tests
 # Tests.autoencoder_test()
 # Tests.autoencoder_classification_test()
 
-Tests.mlp_classification_test()
+# Tests.mlp_classification_test()
+Tests.mlp_classification_test_with_symmetry_features()
