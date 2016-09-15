@@ -33,7 +33,7 @@ class DatasetHelper:
         """
         char_set = string.ascii_uppercase + string.digits
         with tarfile.open(filename) as tar:
-            path = "tmp/{}/".format(random.sample(char_set * 6, 6))
+            path = "tmp/{}/".format(''.join(random.sample(char_set * 6, 6)))
             tar.extractall(path)
             dataset = DatasetHelper.load_data(path, symmetry)
             os.system("rm {} -rf".format(path))
