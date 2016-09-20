@@ -1,0 +1,11 @@
+Come set_3 ma con numero di slice casuale tra 39 e 41
+
+Dataset creato con
+
+16 antenne
+
+-rumore post MOM (SNR = v.a. intera uniforme tra -10 e 30 dB)
+-variabilità su posizione (v.a. uniforme in cerchio di raggio 5cm) e dimensione (ellisse, assi v.a. uniformi in [1,4] cm)  stroke
+-rumore su tissueprop (ogni valore scalato di percentuale gaussiana, ~95% contenuta in +-10% )
+-variabilità su raggio antenne (uniforme 11-12cm) 
+-numero di slice zubal casuale tra 39 e 41

@@ -28,7 +28,8 @@ class DatasetHelper:
         """
         Loads a dataset archive. Reads the filename provided as parameter and returns the dataset as ndarray.
         The returned dataset dimensions are (#samples, #features)
-        :param filename:
+        :param filename: the dataset filename
+        :param symmetry: builds symmetry features
         :return:
         """
         char_set = string.ascii_uppercase + string.digits
@@ -45,6 +46,7 @@ class DatasetHelper:
         Loads a dataset. Reads into the path provided as parameter and returns the dataset as ndarray.
         The returned dataset dimensions are (#samples, #features)
         :param path: folder to look into
+        :param symmetry: builds symmetry features
         :return: the dataset
         """
 

@@ -14,7 +14,6 @@ class MultilayerPerceptron:
         :param classes: Number of classes (size of last layer)
         :param layers_size: size of hidden layers.
         """
-        # def __init__(self, features, classes):
         # Building deep neural network
 
         self.nn = tflearn.input_data(shape=[None, features])
@@ -22,13 +21,6 @@ class MultilayerPerceptron:
             self.nn = tflearn.fully_connected(self.nn, layer_size, activation='tanh',
                                               regularizer='L2', weight_decay=0.001)
             self.nn = tflearn.dropout(self.nn, 0.8)
-
-        # self.dense1 = tflearn.fully_connected(self.input_layer, 64, activation='tanh',
-        #                                       regularizer='L2', weight_decay=0.001)
-        # self.dropout1 = tflearn.dropout(self.dense1, 0.8)
-        # self.dense2 = tflearn.fully_connected(self.dropout1, 64, activation='tanh',
-        #                                       regularizer='L2', weight_decay=0.001)
-        # self.dropout2 = tflearn.dropout(self.dense2, 0.8)
 
         self.softmax = tflearn.fully_connected(self.nn, classes, activation='softmax')
 
@@ -85,3 +77,16 @@ class MultilayerPerceptron:
         """
         scores = self.score(sample)
         return np.argmax(scores)
+
+    def classify(self, sample, threshold):
+        """
+        Returns the classification comparing the ratio of the two scores.
+        :param threshold: the threshold over which scores[0]/scores[1] returns 0
+        :param sample: the sample to be classified
+        :return:
+        """
+        scores = self.score(sample)
+        if scores[0][0] / scores[0][1] > threshold:
+            return 0
+        else:
+            return 1
