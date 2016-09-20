@@ -229,12 +229,21 @@ def mlp_classification_test_with_symmetry_features():
     training_set, training_labels, test_set, test_labels = __load_set5()
 
     """
-    Addestro l'autoencoder sui dati di cervello sano:
+    Addestro l'autoencoder sui dati di cervello (sano e stroke):
     """
     # mlperc.train(training_set, training_labels, 400)
     # mlperc.save("res/saved_nns/symmetry_64_16_multi_slice.dat")
-    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice.dat")  # mlp.64_16.dat 97% accuracy, trained on set_4
+    #
+    #       mlp.64_16.dat                ###   97% accuracy, 1.125% false alarm, trained on set_4
+    #       mlp.64_16_multi_slice.dat    ###   98% accuracy, 0 false alarm,      trained on set_5.
+    #
+    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice.dat")
 
+    """
+    Valuto le prestazioni e calcolo dati per curva ROC.
+    parametro della curva: soglia con cui il classificatore decide, confrontando (rapporto) delle likelihood delle
+    due classi.
+    """
     print("evaluating...")
     thresholds = np.hstack(
         (np.array([0.001, 0.005, 0.01, 0.02, 0.08, 0.095, 0.096, 0.0991, 1, 10, 20]), np.linspace(60, 600, num=5)))
