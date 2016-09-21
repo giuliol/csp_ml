@@ -234,10 +234,10 @@ def mlp_classification_test_with_symmetry_features():
     # mlperc.train(training_set, training_labels, 400)
     # mlperc.save("res/saved_nns/symmetry_64_16_multi_slice.dat")
     #
-    #       mlp.64_16.dat                ###   97% accuracy, 1.125% false alarm, trained on set_4
-    #       mlp.64_16_multi_slice.dat    ###   98% accuracy, 0 false alarm,      trained on set_5.
+    #       symmetry_64_16.dat                  ###   97% accuracy, 1.125% false alarm, trained on set_4
+    #       symmetry_64_16_multi_slice.dat      ###   98% accuracy, 0 false alarm,      trained on set_5
     #
-    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice.dat")
+    mlperc.load("res/saved_nns/symmetry_64_16.dat")
 
     """
     Valuto le prestazioni e calcolo dati per curva ROC.
@@ -255,8 +255,8 @@ def mlp_classification_test_with_symmetry_features():
     false_negatives = np.zeros(thresholds.shape)
     false_positives = np.zeros(thresholds.shape)
 
-    stroke_test_set = DatasetHelper.load_archive("res/set_5/stroke_test.tar.gz", 1)
-    healthy_test_set = DatasetHelper.load_archive("res/set_5/healthy_test.tar.gz", 1)
+    stroke_test_set = DatasetHelper.load_archive("res/set_4/stroke_test.tar.gz", 1)
+    healthy_test_set = DatasetHelper.load_archive("res/set_4/healthy_test.tar.gz", 1)
 
     for i, THRESH in enumerate(thresholds):
 
@@ -276,8 +276,8 @@ def mlp_classification_test_with_symmetry_features():
 
         total = (len(healthy_test_set) + len(stroke_test_set))
         correct_decisions[i] /= total
-        false_negatives[i] /= total
-        false_positives[i] /= total
+        false_negatives[i] /= len(stroke_test_set)
+        false_positives[i] /= len(healthy_test_set)
         true_negatives[i] /= len(healthy_test_set)
         true_positives[i] /= len(stroke_test_set)
         print("threshold {}, corr.{}".format(THRESH, correct_decisions[i]))
@@ -285,7 +285,7 @@ def mlp_classification_test_with_symmetry_features():
         #                                                                                                  correct_decisions,
         #                                                                                                  false_positives,
         #                                                                                                  false_negatives))
-    with open("res/ROC.txt", "w") as f:
+    with open("res/set_4/ROC.txt", "w") as f:
         f.write("# thresholds, true_negatives, true_positives, false_negatives, false_positives\n")
         for i, t in enumerate(thresholds):
             f.write("{} , {} , {} , {} , {}\n".format(t, true_negatives[i], true_positives[i], false_negatives[i],

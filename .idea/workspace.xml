@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-dataset con variabilità su slice (39-41)&#10;">
+    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="-commenti in funzione mlp_classification_test_with_symmetry_features()&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_units/Tests.py" afterPath="$PROJECT_DIR$/src/test_units/Tests.py" />
     </list>
@@ -27,8 +27,8 @@
       <file leaf-file-name="Tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test_units/Tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-336">
-              <caret line="217" column="50" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="50" />
+            <state relative-caret-position="387">
+              <caret line="287" column="24" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
                 <element signature="e#174#419#0" expanded="false" />
@@ -41,19 +41,8 @@
                 <element signature="e#12791#13511#0" expanded="false" />
                 <element signature="e#13537#14257#0" expanded="false" />
                 <element signature="e#14284#14985#0" expanded="false" />
-                <element signature="e#18449#20420#0" expanded="false" />
-                <element signature="e#20466#25025#0" expanded="false" />
+                <element signature="e#20503#25062#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ROC.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/ROC.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="41" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="41" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -271,6 +260,10 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="set_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -283,10 +276,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="set_5" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -665,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474384957403</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="-commenti in funzione mlp_classification_test_with_symmetry_features()&#10;">
+      <created>1474386351696</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1474386351696</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -690,7 +686,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.47974584" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955848" sideWeight="0.49086577" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986711" sideWeight="0.49086577" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -748,7 +744,8 @@
     <MESSAGE value="-aggiunte feature di simmetria" />
     <MESSAGE value="-corretto bug su directory tmp/&#10;-incluso dataset 4" />
     <MESSAGE value="-dataset con variabilità su slice (39-41)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="-dataset con variabilità su slice (39-41)&#10;" />
+    <MESSAGE value="-commenti in funzione mlp_classification_test_with_symmetry_features()&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="-commenti in funzione mlp_classification_test_with_symmetry_features()&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -756,7 +753,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="12" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -777,8 +774,7 @@
             <element signature="e#12791#13511#0" expanded="false" />
             <element signature="e#13537#14257#0" expanded="false" />
             <element signature="e#14284#14985#0" expanded="false" />
-            <element signature="e#18449#20420#0" expanded="false" />
-            <element signature="e#20466#25025#0" expanded="false" />
+            <element signature="e#20503#25062#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -814,8 +810,7 @@
             <element signature="e#12791#13511#0" expanded="false" />
             <element signature="e#13537#14257#0" expanded="false" />
             <element signature="e#14284#14985#0" expanded="false" />
-            <element signature="e#18449#20420#0" expanded="false" />
-            <element signature="e#20466#25025#0" expanded="false" />
+            <element signature="e#20503#25062#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -851,8 +846,7 @@
             <element signature="e#12791#13511#0" expanded="false" />
             <element signature="e#13537#14257#0" expanded="false" />
             <element signature="e#14284#14985#0" expanded="false" />
-            <element signature="e#18449#20420#0" expanded="false" />
-            <element signature="e#20466#25025#0" expanded="false" />
+            <element signature="e#20503#25062#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1064,8 +1058,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_units/Tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="217" column="50" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="50" />
+        <state relative-caret-position="387">
+          <caret line="287" column="24" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
             <element signature="e#174#419#0" expanded="false" />
@@ -1078,8 +1072,7 @@
             <element signature="e#12791#13511#0" expanded="false" />
             <element signature="e#13537#14257#0" expanded="false" />
             <element signature="e#14284#14985#0" expanded="false" />
-            <element signature="e#18449#20420#0" expanded="false" />
-            <element signature="e#20466#25025#0" expanded="false" />
+            <element signature="e#20503#25062#0" expanded="false" />
           </folding>
         </state>
       </provider>
