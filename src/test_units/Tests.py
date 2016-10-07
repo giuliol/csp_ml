@@ -48,6 +48,30 @@ def dataset_helper_test():
     return 0
 
 
+def austin_test():
+    """"""
+    """
+    Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
+    ha dimensione 494=16*15*2 (modulo e fase) + 14 feature di simmetria
+    """
+    mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
+    mlperc.load("res/saved_nns/symmetry_64_16.dat")
+    healthy = DatasetHelper.load_data("res/austin_test/healthy", 1)
+    stroke = DatasetHelper.load_data("res/austin_test/stroke", 1)
+
+    print("Classifying the healthy sample:\n")
+    if mlperc.classify(healthy, 1):
+        print("STROKE")
+    else:
+        print("Healthy")
+
+    print("Classifying the stroke sample:\n")
+    if mlperc.classify(stroke, 1):
+        print("STROKE")
+    else:
+        print("Healthy")
+
+
 def mlp_classification_test_with_symmetry_features():
     """"""
     """
@@ -89,6 +113,8 @@ def mlp_classification_test_with_symmetry_features():
 
     stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
     healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
+
+    print("Size of stroke_test_set: {}".format(stroke_test_set.size))
 
     for i, THRESH in enumerate(thresholds):
 

@@ -8,4 +8,7 @@ from src.test_units import Tests
 # Tests.autoencoder_classification_test()
 
 # Tests.mlp_classification_test()
-Tests.mlp_classification_test_with_symmetry_features()
+
+# Tests.mlp_classification_test_with_symmetry_features()
+
+Tests.austin_test()
