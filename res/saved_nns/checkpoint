@@ -1,2 +1,2 @@
-model_checkpoint_path: "symmetry_64_16_multi_slice.dat"
-all_model_checkpoint_paths: "symmetry_64_16_multi_slice.dat"
+model_checkpoint_path: "symmetry_64_16_2_multi_slice_4_and_5.dat"
+all_model_checkpoint_paths: "symmetry_64_16_2_multi_slice_4_and_5.dat"

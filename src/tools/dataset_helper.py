@@ -93,3 +93,240 @@ class DatasetHelper:
             return np.column_stack((np.zeros((samples, 1)), np.ones((samples, 1))))
         else:
             return np.column_stack((np.ones((samples, 1)), np.zeros((samples, 1))))
+
+
+class DatasetLoader:
+    def __init__(self):
+        dummy = 0
+
+    @staticmethod
+    def set4_and_5():
+        healthy_training_set4, healthy_training_labels4, healthy_test_set4, healthy_test_labels4 = DatasetHelper.load_archive(
+            "res/set_4/healthy_training.tar.gz", 1), \
+                                                                                                   DatasetHelper.generate_labels(
+                                                                                                       1600,
+                                                                                                       DatasetHelper.LABEL_HEALTHY), \
+                                                                                                   DatasetHelper.load_archive(
+                                                                                                       "res/set_4/healthy_test.tar.gz",
+                                                                                                       1), \
+                                                                                                   DatasetHelper.generate_labels(
+                                                                                                       400,
+                                                                                                       DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set4, stroke_training_labels4, stroke_test_set4, stroke_test_labels4 = DatasetHelper.load_archive(
+            "res/set_4/stroke_training.tar.gz", 1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   1600,
+                                                                                                   DatasetHelper.LABEL_STROKE), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   "res/set_4/stroke_test.tar.gz",
+                                                                                                   1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   400,
+                                                                                                   DatasetHelper.LABEL_STROKE)
+
+        training_set4 = np.row_stack((healthy_training_set4, stroke_training_set4))
+        test_set4 = np.row_stack((healthy_test_set4, stroke_test_set4))
+
+        training_labels4 = np.row_stack((healthy_training_labels4, stroke_training_labels4))
+        test_labels4 = np.row_stack((healthy_test_labels4, stroke_test_labels4))
+
+        healthy_training_set5, healthy_training_labels5, healthy_test_set5, healthy_test_labels5 = DatasetHelper.load_archive(
+            "res/set_5/healthy_training.tar.gz", 1), \
+                                                                                                   DatasetHelper.generate_labels(
+                                                                                                       700,
+                                                                                                       DatasetHelper.LABEL_HEALTHY), \
+                                                                                                   DatasetHelper.load_archive(
+                                                                                                       "res/set_4/healthy_test.tar.gz",
+                                                                                                       1), \
+                                                                                                   DatasetHelper.generate_labels(
+                                                                                                       300,
+                                                                                                       DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set5, stroke_training_labels5, stroke_test_set5, stroke_test_labels5 = DatasetHelper.load_archive(
+            "res/set_5/stroke_training.tar.gz", 1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   700,
+                                                                                                   DatasetHelper.LABEL_STROKE), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   "res/set_4/stroke_test.tar.gz",
+                                                                                                   1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   300,
+                                                                                                   DatasetHelper.LABEL_STROKE)
+
+        training_set5 = np.row_stack((healthy_training_set5, stroke_training_set5))
+        test_set5 = np.row_stack((healthy_test_set5, stroke_test_set5))
+
+        training_labels5 = np.row_stack((healthy_training_labels5, stroke_training_labels5))
+        test_labels5 = np.row_stack((healthy_test_labels5, stroke_test_labels5))
+
+        training_set = np.row_stack((training_set4, training_set5))
+        training_labels = np.row_stack((training_labels4, training_labels5))
+
+        test_set = np.row_stack((test_set4, test_set5))
+        test_labels = np.row_stack((test_labels4, test_labels5))
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set5():
+        healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_archive(
+            "res/set_5/healthy_training.tar.gz", 1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   700,
+                                                                                                   DatasetHelper.LABEL_HEALTHY), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   "res/set_4/healthy_test.tar.gz",
+                                                                                                   1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   300,
+                                                                                                   DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_archive(
+            "res/set_5/stroke_training.tar.gz", 1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               700,
+                                                                                               DatasetHelper.LABEL_STROKE), \
+                                                                                           DatasetHelper.load_archive(
+                                                                                               "res/set_4/stroke_test.tar.gz",
+                                                                                               1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               300,
+                                                                                               DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+        test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set4():
+        healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_archive(
+            "res/set_4/healthy_training.tar.gz", 1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   1600,
+                                                                                                   DatasetHelper.LABEL_HEALTHY), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   "res/set_4/healthy_test.tar.gz",
+                                                                                                   1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   400,
+                                                                                                   DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_archive(
+            "res/set_4/stroke_training.tar.gz", 1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               1600,
+                                                                                               DatasetHelper.LABEL_STROKE), \
+                                                                                           DatasetHelper.load_archive(
+                                                                                               "res/set_4/stroke_test.tar.gz",
+                                                                                               1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               400,
+                                                                                               DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+        test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set3():
+        healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_archive(
+            "res/set_3/healthy_training.tar.gz", 0), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   700,
+                                                                                                   DatasetHelper.LABEL_HEALTHY), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   "res/set_3/healthy_test.tar.gz",
+                                                                                                   0), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   300,
+                                                                                                   DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_archive(
+            "res/set_3/stroke_training.tar.gz", 0), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               700,
+                                                                                               DatasetHelper.LABEL_STROKE), \
+                                                                                           DatasetHelper.load_archive(
+                                                                                               "res/set_3/stroke_test.tar.gz",
+                                                                                               0), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               300,
+                                                                                               DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+        test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set2b():
+        healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_data(
+            "res/set_2/healthy/training", 0), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   400,
+                                                                                                   DatasetHelper.LABEL_HEALTHY), \
+                                                                                               DatasetHelper.load_data(
+                                                                                                   "res/set_2/healthy/test",
+                                                                                                   0), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   100,
+                                                                                                   DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_data(
+            "res/set_2/stroke/training", 0), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               400,
+                                                                                               DatasetHelper.LABEL_STROKE), \
+                                                                                           DatasetHelper.load_data(
+                                                                                               "res/set_2/stroke/test",
+                                                                                               0), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               100,
+                                                                                               DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+        test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set2():
+        training_set, training_labels, test_set, test_labels = DatasetHelper.load_data("res/set_2/healthy/training", 0), \
+                                                               DatasetHelper.generate_labels(400,
+                                                                                             DatasetHelper.LABEL_HEALTHY), \
+                                                               DatasetHelper.load_data("res/set_2/healthy/test", 0), \
+                                                               DatasetHelper.generate_labels(100,
+                                                                                             DatasetHelper.LABEL_HEALTHY)
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def set1():
+        training_set, training_labels, test_set, test_labels = DatasetHelper.load_data("res/set_1/healthy/training", 0), \
+                                                               DatasetHelper.generate_labels(700,
+                                                                                             DatasetHelper.LABEL_HEALTHY), \
+                                                               DatasetHelper.load_data("res/set_1/healthy/test", 0), \
+                                                               DatasetHelper.generate_labels(300,
+                                                                                             DatasetHelper.LABEL_HEALTHY)
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
+    def dummy():
+        training_set, training_labels, test_set, test_labels = DatasetHelper.load_data("res/dummy/training", 0), \
+                                                               DatasetHelper.generate_labels(30,
+                                                                                             DatasetHelper.LABEL_HEALTHY), \
+                                                               DatasetHelper.load_data("res/dummy/test", 0), \
+                                                               DatasetHelper.generate_labels(2,
+                                                                                             DatasetHelper.LABEL_HEALTHY)
+        return training_set, training_labels, test_set, test_labels
