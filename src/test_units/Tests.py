@@ -55,17 +55,17 @@ def austin_test():
     ha dimensione 494=16*15*2 (modulo e fase) + 14 feature di simmetria
     """
     mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
-    mlperc.load("res/saved_nns/symmetry_64_16.dat")
+    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat")
     healthy = DatasetHelper.load_data("res/austin_test/healthy", 1)
     stroke = DatasetHelper.load_data("res/austin_test/stroke", 1)
 
     print("healthy")
     for sample in healthy:
-        print(mlperc.score(sample))
+        print(mlperc.classify(sample, 1))
 
     print("stroke")
     for sample in stroke:
-        print(mlperc.score(sample))
+        print(mlperc.classify(sample, 1))
 
     do_ROC(mlperc, stroke, healthy)
 
@@ -93,7 +93,7 @@ def mlp_classification_test_with_symmetry_features():
     #       symmetry_64_16_multi_slice.dat          ###   98% accuracy, 0 false alarm,      trained on set_5
     #       symmetry_64_16_multi_slice_4_and_5.dat  ###   trained on (set 4 and 5)
     #
-    mlperc.load("res/saved_nns/symmetry_64_16.dat")
+    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat")
 
     """
     Valuto le prestazioni e calcolo dati per curva ROC.
@@ -111,8 +111,10 @@ def mlp_classification_test_with_symmetry_features():
     false_negatives = np.zeros(thresholds.shape)
     false_positives = np.zeros(thresholds.shape)
 
-    stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
-    healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
+    # stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
+    # healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
+    stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test", 1)
+    healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test", 1)
 
     print("Size of stroke_test_set: {}".format(stroke_test_set.size))
 

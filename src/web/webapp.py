@@ -23,7 +23,7 @@ def upload_file1():
         f.save(secure_filename(f.filename))
 
         sample = DatParser.parse_file(f.filename, 1)
-        if mlperc.classify(sample, 1):
+        if not mlperc.classify(sample, 1):
             res = "STROKE"
         else:
             res = "HEALTHY"
