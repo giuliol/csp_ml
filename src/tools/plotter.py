@@ -1,4 +1,50 @@
 import matplotlib.pyplot as plt
+import numpy as np
+
+
+def do_ROC(mlperc, stroke_test_set, healthy_test_set):
+    thresholds = np.hstack(
+        (np.array([0.001, 0.005, 0.01, 0.02, 0.08, 0.095, 0.096, 0.0991, 1, 10, 20]), np.linspace(60, 600, num=5)))
+
+    correct_decisions = np.zeros(thresholds.shape)
+    true_positives = np.zeros(thresholds.shape)
+    true_negatives = np.zeros(thresholds.shape)
+
+    false_negatives = np.zeros(thresholds.shape)
+    false_positives = np.zeros(thresholds.shape)
+
+    print("Size of stroke_test_set: {}".format(stroke_test_set.size))
+
+    for i, THRESH in enumerate(thresholds):
+
+        for sample in stroke_test_set:
+            if mlperc.classify(sample, THRESH):
+                false_negatives[i] += 1
+            else:
+                correct_decisions[i] += 1
+                true_positives[i] += 1
+
+        for sample in healthy_test_set:
+            if mlperc.classify(sample, THRESH):
+                correct_decisions[i] += 1
+                true_negatives[i] += 1
+            else:
+                false_positives[i] += 1
+
+        total = (len(healthy_test_set) + len(stroke_test_set))
+        correct_decisions[i] /= total
+        false_negatives[i] /= len(stroke_test_set)
+        false_positives[i] /= len(healthy_test_set)
+        true_negatives[i] /= len(healthy_test_set)
+        true_positives[i] /= len(stroke_test_set)
+
+        print("threshold {}, corr.{}".format(THRESH, correct_decisions[i]))
+        # print("Total {} test samples.\nCorrect decisions:{} false alarms:{} missed detections:{}".format(total,
+        #                                                                                                  correct_decisions,
+        #                                                                                                  false_positives,
+        #                                                                                                  false_negatives))
+
+    plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
 
 
 def plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds):

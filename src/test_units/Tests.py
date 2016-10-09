@@ -2,7 +2,7 @@ from src.tools import simulator_data_parser
 from src.ml import autoencoder, mlp
 from src.tools.dataset_helper import DatasetHelper
 from src.tools.dataset_helper import DatasetLoader
-from src.tools.plotter import plot_ROC
+from src.tools.plotter import plot_ROC, do_ROC
 import numpy as np
 
 
@@ -59,17 +59,17 @@ def austin_test():
     healthy = DatasetHelper.load_data("res/austin_test/healthy", 1)
     stroke = DatasetHelper.load_data("res/austin_test/stroke", 1)
 
-    print("Classifying the healthy sample:\n")
-    if mlperc.classify(healthy, 1):
-        print("STROKE")
-    else:
-        print("Healthy")
+    print("healthy")
+    for sample in healthy:
+        print(mlperc.score(sample))
 
-    print("Classifying the stroke sample:\n")
-    if mlperc.classify(stroke, 1):
-        print("STROKE")
-    else:
-        print("Healthy")
+    print("stroke")
+    for sample in stroke:
+        print(mlperc.score(sample))
+
+    do_ROC(mlperc, stroke, healthy)
+
+
 
 
 def mlp_classification_test_with_symmetry_features():

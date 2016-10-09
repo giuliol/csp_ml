@@ -26,36 +26,40 @@ class DatParser:
         return views
 
     @staticmethod
-    def parse_file(filename):
+    def parse_file(filename, symmetry):
         """
         Parse a specific file and stores the features (electromagnetic S values) in a ndarray.
         :param filename: the file to parse
+        :param symmetry: 1 if symmetry features are to be computed
         :return: a real valued, (views * (views-1) * 2, ) sized ndarray.
         """
-        with open(filename) as f:
-            content = f.readlines()
-            views = DatParser.count_views(filename)
+        if symmetry:
+            return DatParser.parse_file_and_compute_symmetry(filename)
+        else:
+            with open(filename) as f:
+                content = f.readlines()
+                views = DatParser.count_views(filename)
 
-        values = np.zeros((views, views - 1), dtype=np.complex_)
+            values = np.zeros((views, views - 1), dtype=np.complex_)
 
-        with open(filename) as f:
-            content = f.readlines()
-            _views = -1
-            view_count = 0
+            with open(filename) as f:
+                content = f.readlines()
+                _views = -1
+                view_count = 0
 
-            for line in content:
-                if line[0] == "#":
-                    _views += 1
-                    view_count = 0
-                else:
-                    readvalues = line.split()
-                    # coordinates[views, view_count, 0], coordinates[views, view_count, 1] = values[0], values[1]
-                    #
-                    # Reads magnitude(3) and phase(4)
-                    values[_views, view_count] = float(readvalues[4]) + float(readvalues[5]) * 1j
-                    view_count += 1
+                for line in content:
+                    if line[0] == "#":
+                        _views += 1
+                        view_count = 0
+                    else:
+                        readvalues = line.split()
+                        # coordinates[views, view_count, 0], coordinates[views, view_count, 1] = values[0], values[1]
+                        #
+                        # Reads magnitude(3) and phase(4)
+                        values[_views, view_count] = float(readvalues[4]) + float(readvalues[5]) * 1j
+                        view_count += 1
 
-        return DatParser.__flatten(views, values)
+            return DatParser.__flatten(views, values)
 
     @staticmethod
     def parse_file_and_compute_symmetry(filename):
