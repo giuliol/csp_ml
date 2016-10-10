@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Markup
 from werkzeug import secure_filename
 from src.ml import mlp
 from src.tools.dataset_helper import DatParser
 import os
-import webbrowser
 
 app = Flask(__name__)
 
@@ -11,6 +10,32 @@ mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
 __NN_NAME = "../../res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat"
 mlperc.load(__NN_NAME)
 
+upload_form = """
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Using {}
+    </div>
+    <div class="panel-body">
+        <br>Choose a <i>.dat</i> file to classify.
+        <br><br>
+        <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file"/><br>
+                <input class="btn btn-default" type="submit"/><br></form>
+    </div>
+</div>
+"""
+
+classification_result = """
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Using {}
+    </div>
+    <div class="panel-body">
+        <i> {} </i> <br><br> has been classified as <b><font color="{}">{}</font></b>.
+
+    </div>
+
+"""
 
 @app.route('/')
 def index():
@@ -19,17 +44,17 @@ def index():
 
 @app.route('/train')
 def train():
-    return render_template('train.html')
+    return render_template('index.html', page_inner="TBD", train=True)
 
 
 @app.route('/evaluate')
 def evaluate():
-    return render_template('evaluate.html')
+    return render_template('index.html', page_inner="TBD", evaluate=True)
 
 
-@app.route('/classify')
+@app.route('/classify', methods=['GET', 'POST'])
 def upload_file():
-    return render_template('upload.html', nnname=__NN_NAME)
+    return render_template('index.html', page_inner=Markup(upload_form.format(__NN_NAME)), classify=True)
 
 
 @app.route('/uploader', methods=['GET', 'POST'])
@@ -46,8 +71,9 @@ def upload_file1():
             res = "HEALTHY"
             col = "green"
         os.remove(f.filename)
-        return render_template('classification_output.html', filename=f.filename, result=res, nnname=__NN_NAME,
-                               color=col)
+
+        return render_template('index.html',
+                               page_inner=Markup(classification_result.format(__NN_NAME, f.filename, col, res)))
 
 
 if __name__ == '__main__':

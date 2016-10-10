@@ -1,12 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Index</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CSP Machine Learning</title>
+    <!-- Bootstrap Styles-->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/>
+    <!-- FontAwesome Styles-->
+    <link href="{{ url_for('static', filename='css/font-awesome.css') }} " rel="stylesheet"/>
+    <!-- Morris Chart Styles-->
+    <link href="{{ url_for('static', filename='js/morris/morris-0.4.3.min.css') }}" rel="stylesheet"/>
+    <!-- Custom Styles-->
+    <link href="{{ url_for('static', filename='css/custom-styles.css') }}" rel="stylesheet"/>
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 </head>
+
 <body>
-<a href="train">Train new network</a><br><br>
-<a href="evaluate">Evaluate existing network</a><br><br>
-<a href="classify">Classify single sample using existing network</a><br><br>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">CSP ML</a>
+        </div>
+
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="evaluate" {% if evaluate %} class="active-menu" {% endif %}><i class="fa fa-dashboard"></i>Evaluate
+                        existing network</a>
+                </li>
+                <li>
+                    <a href="train" {% if train %} class="active-menu" {% endif %}><i class="fa fa-cogs"></i>Train new
+                        network</a>
+                </li>
+                <li>
+                    <a href="classify" {% if classify %} class="active-menu" {% endif %}><i class="fa fa-question"></i>Classify
+                        new sample</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+
+            {{ page_inner }}
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
+<!-- Bootstrap Js -->
+<script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }} "></script>
+<!-- Metis Menu Js -->
+<script src="{{ url_for('static', filename='js/jquery.metisMenu.js') }} "></script>
+<!-- Morris Chart Js -->
+
+<script src="{{ url_for('static', filename='js/morris/morris.js') }} "></script>
+<!-- Custom Js -->
+<script src="{{ url_for('static', filename='js/custom-scripts.js') }} "></script>
+
+
 </body>
+
 </html>
