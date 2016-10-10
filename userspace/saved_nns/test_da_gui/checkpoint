@@ -1,0 +1,2 @@
+model_checkpoint_path: "test_da_gui.dat"
+all_model_checkpoint_paths: "test_da_gui.dat"
