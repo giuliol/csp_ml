@@ -7,8 +7,8 @@ import os
 app = Flask(__name__)
 
 mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
-mlperc.load("../../res/saved_nns/symmetry_64_16.dat")
-__NN_NAME = "../../res/saved_nns/symmetry_64_16.dat"
+__NN_NAME = "../../res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat"
+mlperc.load(__NN_NAME)
 
 
 @app.route('/upload')
@@ -25,10 +25,13 @@ def upload_file1():
         sample = DatParser.parse_file(f.filename, 1)
         if not mlperc.classify(sample, 1):
             res = "STROKE"
+            col = "red"
         else:
             res = "HEALTHY"
+            col = "green"
         os.remove(f.filename)
-        return render_template('classification_output.html', filename=f.filename, result=res, nnname=__NN_NAME)
+        return render_template('classification_output.html', filename=f.filename, result=res, nnname=__NN_NAME,
+                               color=col)
 
 
 if __name__ == '__main__':

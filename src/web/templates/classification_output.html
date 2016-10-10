@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Classification results:</title>
@@ -10,6 +10,8 @@
     Using {{ nnname }}
 </h1>
 <br>
-The file you uploaded, <br><br> {{ filename }} <br><br> has been classified as <b><font color="red">{{ result }}</font></b>.
+<i> {{ filename }} </i> <br><br> has been classified as <b><font color="{{ color }}">{{ result }}</font></b>.
+<br><br>
+<a href="upload">back to upload page</a>
 </body>
 </html>

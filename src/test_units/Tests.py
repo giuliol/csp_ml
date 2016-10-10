@@ -70,8 +70,6 @@ def austin_test():
     do_ROC(mlperc, stroke, healthy)
 
 
-
-
 def mlp_classification_test_with_symmetry_features():
     """"""
     """
@@ -111,10 +109,10 @@ def mlp_classification_test_with_symmetry_features():
     false_negatives = np.zeros(thresholds.shape)
     false_positives = np.zeros(thresholds.shape)
 
-    # stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
-    # healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
-    stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test", 1)
-    healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test", 1)
+    stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
+    healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
+    # stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test", 1)
+    # healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test", 1)
 
     print("Size of stroke_test_set: {}".format(stroke_test_set.size))
 
