@@ -50,11 +50,23 @@ def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *
 
 
 # TODO Guarda simmetria e implementa
-def test_existing(name, healthy_test, stroke_test):
-    mlperc = mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/{}".format(name))
-    stroke_test_set = DatasetHelper.load_archive(stroke_test, 1)
-    healthy_test_set = DatasetHelper.load_archive(healthy_test, 1)
-    return
+def test_existing(root, name, healthy_test, stroke_test):
+    dir = "static/"
+    files = os.listdir(dir)
+
+    for file in files:
+        if file.endswith(".png"):
+            os.remove(os.path.join(dir, file))
+
+    mlperc = mlp.MultilayerPerceptron.load_folder("{}userspace/saved_nns/{}".format(root, name))
+
+    stroke_test_set = DatasetHelper.load_archive(stroke_test, mlperc.uses_symmetry_features())
+    healthy_test_set = DatasetHelper.load_archive(healthy_test, mlperc.uses_symmetry_features())
+    mlperc.destroy()
+
+    return test_mlp(mlperc, healthy_test_set, stroke_test_set)
+
+
 
 
 def classify(nn_filepath, sample_filepath):

@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+import string
 
 
 def do_ROC(mlperc, stroke_test_set, healthy_test_set):
@@ -87,7 +89,7 @@ def test_mlp(mlperc, healthy_test_set, stroke_test_set):
         #                                                                                                  false_positives,
         #                                                                                                  false_negatives))
 
-    plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
+    return plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
 
 
 def plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds):
@@ -112,4 +114,11 @@ def plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives
 
     plt.text(0.2, 0.5, "AUC: {}\n{}% correct decisions at 1.0 threshold".format(auc, cd))
     plt.grid()
-    plt.show()
+    figurepath = "static/{}.png".format(randomword(10))
+    plt.savefig(figurepath)
+    plt.close()
+    return auc, figurepath
+
+
+def randomword(length):
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))

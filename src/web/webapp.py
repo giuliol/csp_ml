@@ -20,8 +20,8 @@ train_new_network_html = """
             <label> Compute symmetry features <input type="checkbox" value="True" name="symmetry"> </label>
             <br>
             <br>
-            <label> Healthy training</label> <input type="file" name="healthy_training"/><br>
-            <label> Stroke training</label> <input type="file" name="stroke_training"/><br>
+            <label> Healthy training set</label> <input type="file" name="healthy_training"/><br>
+            <label> Stroke training set</label> <input type="file" name="stroke_training"/><br>
             <label> No. of training epochs </label> <input class="form-control" name="epochs" placeholder="300" />
 
             <input class="btn btn-default" type="submit"/><br></form>
@@ -81,8 +81,8 @@ evaluate_existing_nn_html = """
             </div>
             <br>
             <br>
-            <label> Healthy training</label> <input type="file" name="healthy_training"/><br>
-            <label> Stroke training</label> <input type="file" name="stroke_training"/><br>
+            <label> Healthy test set</label> <input type="file" name="healthy_training"/><br>
+            <label> Stroke test set</label> <input type="file" name="stroke_training"/><br>
             <input class="btn btn-default" type="submit"/><br></form>
 
     </div>
@@ -92,7 +92,11 @@ evaluate_existing_nn_html = """
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    html = """
+    <object data="static/brain.svg" type="image/svg+xml">
+    </object>
+    """
+    return render_template('index.html', page_inner=Markup(html))
 
 
 @app.route('/train')
@@ -137,19 +141,27 @@ def evaluate():
 
 @app.route('/evaluate_existing', methods=['GET', 'POST'])
 def evaluate_existing():
-    nn_filename = request.form['nn_filename']
-    healthy_training_file = request.files['healthy_training']
-    h_tr_filepath = "{}tmp/{}".format(root, healthy_training_file.filename)
-    healthy_training_file.save(h_tr_filepath)
+    if request.method == 'POST':
+        nn_filename = request.form['nn_name']
 
-    stroke_training_file = request.files['stroke_training']
-    s_tr_filepath = "{}tmp/{}".format(root, stroke_training_file.filename)
-    stroke_training_file.save(s_tr_filepath)
+        healthy_training_file = request.files['healthy_training']
+        h_tr_filepath = "{}tmp/{}".format(root, healthy_training_file.filename)
+        healthy_training_file.save(h_tr_filepath)
 
-    mlp_main.test_existing()
-    os.remove(h_tr_filepath)
-    os.remove(s_tr_filepath)
-    return
+        stroke_training_file = request.files['stroke_training']
+        s_tr_filepath = "{}tmp/{}".format(root, stroke_training_file.filename)
+        stroke_training_file.save(s_tr_filepath)
+
+        auc, figure = mlp_main.test_existing(root, nn_filename, h_tr_filepath, s_tr_filepath)
+
+        print("AUC: {}".format(auc))
+
+        html = "<img src={}>".format(figure)
+
+        os.remove(h_tr_filepath)
+        os.remove(s_tr_filepath)
+        return render_template('index.html', page_inner=Markup(html),
+                               evaluate=True)
 
 
 @app.route('/classify')
