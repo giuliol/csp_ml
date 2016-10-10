@@ -3,6 +3,7 @@ from werkzeug import secure_filename
 from src.ml import mlp
 from src.tools.dataset_helper import DatParser
 import os
+import webbrowser
 
 app = Flask(__name__)
 
@@ -11,7 +12,22 @@ __NN_NAME = "../../res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat"
 mlperc.load(__NN_NAME)
 
 
-@app.route('/upload')
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/train')
+def train():
+    return render_template('train.html')
+
+
+@app.route('/evaluate')
+def evaluate():
+    return render_template('evaluate.html')
+
+
+@app.route('/classify')
 def upload_file():
     return render_template('upload.html', nnname=__NN_NAME)
 

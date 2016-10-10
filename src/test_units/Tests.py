@@ -2,7 +2,7 @@ from src.tools import simulator_data_parser
 from src.ml import autoencoder, mlp
 from src.tools.dataset_helper import DatasetHelper
 from src.tools.dataset_helper import DatasetLoader
-from src.tools.plotter import plot_ROC, do_ROC
+from src.tools.perftools import *
 import numpy as np
 
 
@@ -83,7 +83,11 @@ def mlp_classification_test_with_symmetry_features():
     Addestro l'autoencoder sui dati di cervello (sano e stroke):
 
     """
-    # training_set, training_labels, test_set, test_labels = DatasetLoader.set4_and_5()
+    training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
+        "res/set_5/healthy_training.tar.gz",
+        "res/set_5/healthy_test.tar.gz",
+        "res/set_5/stroke_training.tar.gz",
+        "res/set_5/stroke_test.tar.gz")
     # mlperc.train(training_set, training_labels, 400)
     # mlperc.save("res/saved_nns/symmetry_64_16_2_multi_slice_4_and_5.dat")
     #
@@ -99,59 +103,13 @@ def mlp_classification_test_with_symmetry_features():
     due classi.
     """
     print("evaluating...")
-    thresholds = np.hstack(
-        (np.array([0.001, 0.005, 0.01, 0.02, 0.08, 0.095, 0.096, 0.0991, 1, 10, 20]), np.linspace(60, 600, num=5)))
-
-    correct_decisions = np.zeros(thresholds.shape)
-    true_positives = np.zeros(thresholds.shape)
-    true_negatives = np.zeros(thresholds.shape)
-
-    false_negatives = np.zeros(thresholds.shape)
-    false_positives = np.zeros(thresholds.shape)
 
     stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
     healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
     # stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test", 1)
     # healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test", 1)
 
-    print("Size of stroke_test_set: {}".format(stroke_test_set.size))
-
-    for i, THRESH in enumerate(thresholds):
-
-        for sample in stroke_test_set:
-            if mlperc.classify(sample, THRESH):
-                false_negatives[i] += 1
-            else:
-                correct_decisions[i] += 1
-                true_positives[i] += 1
-
-        for sample in healthy_test_set:
-            if mlperc.classify(sample, THRESH):
-                correct_decisions[i] += 1
-                true_negatives[i] += 1
-            else:
-                false_positives[i] += 1
-
-        total = (len(healthy_test_set) + len(stroke_test_set))
-        correct_decisions[i] /= total
-        false_negatives[i] /= len(stroke_test_set)
-        false_positives[i] /= len(healthy_test_set)
-        true_negatives[i] /= len(healthy_test_set)
-        true_positives[i] /= len(stroke_test_set)
-
-        print("threshold {}, corr.{}".format(THRESH, correct_decisions[i]))
-        # print("Total {} test samples.\nCorrect decisions:{} false alarms:{} missed detections:{}".format(total,
-        #                                                                                                  correct_decisions,
-        #                                                                                                  false_positives,
-        #                                                                                                  false_negatives))
-
-    plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
-
-    with open("res/set_4/ROC.txt", "w") as f:
-        f.write("# thresholds, true_negatives, true_positives, false_negatives, false_positives\n")
-        for i, t in enumerate(thresholds):
-            f.write("{} , {} , {} , {} , {}\n".format(t, true_negatives[i], true_positives[i], false_negatives[i],
-                                                      false_positives[i]))
+    test_mlp(mlperc, healthy_test_set, stroke_test_set)
 
 
 def mlp_classification_test():

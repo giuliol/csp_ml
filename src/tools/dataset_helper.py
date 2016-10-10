@@ -100,6 +100,46 @@ class DatasetLoader:
         dummy = 0
 
     @staticmethod
+    def load_archives(healthy_training_filepath, healthy_test_filepath, stroke_training_filepath, stroke_test_filepath):
+        print("healthy training set {}\nhealthy test set {}\nstroke training set {}\nstroke test set {}".format(
+            healthy_training_filepath,
+            healthy_test_filepath,
+            stroke_training_filepath,
+            stroke_test_filepath
+        ))
+
+        healthy_training_set, healthy_training_labels, healthy_test_set, healthy_test_labels = DatasetHelper.load_archive(
+            healthy_training_filepath, 1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   700,
+                                                                                                   DatasetHelper.LABEL_HEALTHY), \
+                                                                                               DatasetHelper.load_archive(
+                                                                                                   healthy_test_filepath,
+                                                                                                   1), \
+                                                                                               DatasetHelper.generate_labels(
+                                                                                                   300,
+                                                                                                   DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels, stroke_test_set, stroke_test_labels = DatasetHelper.load_archive(
+            stroke_training_filepath, 1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               700,
+                                                                                               DatasetHelper.LABEL_STROKE), \
+                                                                                           DatasetHelper.load_archive(
+                                                                                               stroke_test_filepath,
+                                                                                               1), \
+                                                                                           DatasetHelper.generate_labels(
+                                                                                               300,
+                                                                                               DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+        test_set = np.row_stack((healthy_test_set, stroke_test_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        test_labels = np.row_stack((healthy_test_labels, stroke_test_labels))
+        return training_set, training_labels, test_set, test_labels
+
+    @staticmethod
     def set4_and_5():
         healthy_training_set4, healthy_training_labels4, healthy_test_set4, healthy_test_labels4 = DatasetHelper.load_archive(
             "res/set_4/healthy_training.tar.gz", 1), \
