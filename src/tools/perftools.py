@@ -89,12 +89,6 @@ def test_mlp(mlperc, healthy_test_set, stroke_test_set):
 
     plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
 
-    with open("res/set_4/ROC.txt", "w") as f:
-        f.write("# thresholds, true_negatives, true_positives, false_negatives, false_positives\n")
-        for i, t in enumerate(thresholds):
-            f.write("{} , {} , {} , {} , {}\n".format(t, true_negatives[i], true_positives[i], false_negatives[i],
-                                                      false_positives[i]))
-
 
 def plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds):
     plt.fill_between(false_positives, 0, true_positives, facecolor='#ADD8E6')

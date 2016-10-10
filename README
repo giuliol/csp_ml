@@ -9,20 +9,26 @@ STRUTTURA PROGETTO:
         set_2/              - secondo dataset,  AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop
         set_3/              - terzo dataset, AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop ed
                               errore su cerchio antenne
+        set_4/
+        set_5/
+        user_uploads/
+        austin_test/
     src/
         ml/                 - classi per machine learning
         test_units/         -
         tools/              - utilità varie, gestire dataset
+        web/                - webapp, interfaccia grafica
+        mlp_main.py
         main.py
     README                  - questo file
-    TODO                    - cose da aggiungere e idee per miglioramenti
+    TODO                    - cose da aggiungere
 
 
 
 QUICK START:
 
-Vedere in src/test_units/Tests.py le funzioni
+-Con pycharm creare run configuration con la quale lanciare webapp.py
+-Oppure vedere in src/test_units/Tests.py le funzioni
 
-classification_test() - prova con autoencoder
-mlp_classification_test() - prova con multilayer perceptron
+
 

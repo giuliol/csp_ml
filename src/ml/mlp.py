@@ -1,5 +1,8 @@
 import tflearn
+import tensorflow as tf
 import numpy as np
+import os
+from src.tools import xml_tools
 
 
 class MultilayerPerceptron:
@@ -59,6 +62,7 @@ class MultilayerPerceptron:
         :param filename:
         :return:
         """
+
         self.model.load(filename)
 
     def score(self, sample):
@@ -90,3 +94,19 @@ class MultilayerPerceptron:
             return 0
         else:
             return 1
+
+    @staticmethod
+    def load_folder(folder):
+        """
+        Returns a whole MultilayerPerceptron object parsing a folder
+        :param folder:
+        :return:
+        """
+        name = os.path.basename(folder)
+        visible_layers, hidden_layers = xml_tools.parse_topology_xml("{}/{}.xml".format(folder, name))
+        out = MultilayerPerceptron(int(visible_layers[0]), int(visible_layers[1]), *hidden_layers)
+        out.load("{}/{}.dat".format(folder, name))
+        return out
+
+    def destroy(self):
+        tf.reset_default_graph()

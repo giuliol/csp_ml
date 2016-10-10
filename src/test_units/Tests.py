@@ -1,51 +1,7 @@
-from src.tools import simulator_data_parser
 from src.ml import autoencoder, mlp
 from src.tools.dataset_helper import DatasetHelper
 from src.tools.dataset_helper import DatasetLoader
 from src.tools.perftools import *
-import numpy as np
-
-
-def tools_test():
-    print("------- TEST BEGIN -------")
-
-    sv = simulator_data_parser.DatParser(10, 1000)
-    sv.parse_file("res/ETotExt.SNR15.dat")
-
-    vals = sv.values
-    print(vals)
-    print(sv.flatten())
-    print("------- TEST   END -------")
-    return 0
-
-
-def autoencoder_test():
-    ae = autoencoder.Autoencoder()
-
-    training_set, training_labels, test_set, test_labels = DatasetHelper.load_data("res/set_1/healthy/training"), \
-                                                           DatasetHelper.generate_labels(700,
-                                                                                         DatasetHelper.LABEL_HEALTHY), \
-                                                           DatasetHelper.load_data("res/set_1/healthy/test"), \
-                                                           DatasetHelper.generate_labels(300,
-                                                                                         DatasetHelper.LABEL_HEALTHY)
-
-    ae.train(training_set, training_labels, test_set, test_labels)
-
-
-def dataset_helper_test():
-    training_set = DatasetHelper.load_data("res/set_1/healthy/training")
-    test_set = DatasetHelper.load_data("res/set_1/healthy/test")
-
-    print(training_set.shape)
-    print(test_set.shape)
-
-    labels_healthy = DatasetHelper.generate_labels(len(training_set), DatasetHelper.LABEL_HEALTHY)
-    labels_stroke = DatasetHelper.generate_labels(len(training_set), DatasetHelper.LABEL_STROKE)
-
-    print(labels_healthy[1:10, :])
-    print(labels_stroke[1:10, :])
-
-    return 0
 
 
 def austin_test():
@@ -56,8 +12,8 @@ def austin_test():
     """
     mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
     mlperc.load("res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat")
-    healthy = DatasetHelper.load_data("res/austin_test/healthy", 1)
-    stroke = DatasetHelper.load_data("res/austin_test/stroke", 1)
+    healthy = DatasetHelper.load_data("res/datasets/austin_test/healthy", 1)
+    stroke = DatasetHelper.load_data("res/datasets/austin_test/stroke", 1)
 
     print("healthy")
     for sample in healthy:
@@ -72,22 +28,13 @@ def austin_test():
 
 def mlp_classification_test_with_symmetry_features():
     """"""
-    """
-    Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
-    ha dimensione 494=16*15*2 (modulo e fase) + 14 feature di simmetria
-    """
-    mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
 
-    """
-    Carico il dataset. Uso helper definito sopra
-    Addestro l'autoencoder sui dati di cervello (sano e stroke):
-
-    """
-    training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
-        "res/set_5/healthy_training.tar.gz",
-        "res/set_5/healthy_test.tar.gz",
-        "res/set_5/stroke_training.tar.gz",
-        "res/set_5/stroke_test.tar.gz")
+    # mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
+    # training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
+    #     "res/datasets/set_5/healthy_training.tar.gz",
+    #     "res/datasets/set_5/healthy_test.tar.gz",
+    #     "res/datasets/set_5/stroke_training.tar.gz",
+    #     "res/datasets/set_5/stroke_test.tar.gz")
     # mlperc.train(training_set, training_labels, 400)
     # mlperc.save("res/saved_nns/symmetry_64_16_2_multi_slice_4_and_5.dat")
     #
@@ -95,7 +42,8 @@ def mlp_classification_test_with_symmetry_features():
     #       symmetry_64_16_multi_slice.dat          ###   98% accuracy, 0 false alarm,      trained on set_5
     #       symmetry_64_16_multi_slice_4_and_5.dat  ###   trained on (set 4 and 5)
     #
-    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat")
+
+    mlperc = mlp.MultilayerPerceptron.load_folder("res/saved_nns/symmetry_64_16_multi_slice_4_and_5")
 
     """
     Valuto le prestazioni e calcolo dati per curva ROC.
@@ -104,64 +52,12 @@ def mlp_classification_test_with_symmetry_features():
     """
     print("evaluating...")
 
-    stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 1)
-    healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 1)
-    # stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test", 1)
-    # healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test", 1)
+    stroke_test_set = DatasetHelper.load_archive("res/datasets/set_3/stroke_test.tar.gz", 1)
+    healthy_test_set = DatasetHelper.load_archive("res/datasets/set_3/healthy_test.tar.gz", 1)
+    # stroke_test_set = DatasetHelper.load_data("res/datasets/set_2/stroke/test", 1)
+    # healthy_test_set = DatasetHelper.load_data("res/datasets/set_2/healthy/test", 1)
 
     test_mlp(mlperc, healthy_test_set, stroke_test_set)
-
-
-def mlp_classification_test():
-    """"""
-    """
-    Inizializzazione: ho usato 16 antenne nel dataset. Il vettore di "feature" (le misure em.)
-    ha dimensione 480=16*15*2 (modulo e fase)
-    """
-    mlperc = mlp.MultilayerPerceptron(480, 2, 64, 16)
-
-    """
-    Carico il dataset. Uso helper definito sopra
-    """
-    training_set, training_labels, test_set, test_labels = DatasetLoader.__load_set3()
-
-    """
-    Addestro l'autoencoder sui dati di cervello sano:
-    """
-    # mlperc.train(training_set, training_labels, test_set, test_labels, 400)
-    # mlperc.save("res/saved_nns/mlp.64_16.dat")
-    mlperc.load("res/saved_nns/mlp.64_16.dat")  # mlp.64_16.dat 97% accuracy
-
-    print("evaluating...")
-
-    correct_decisions = 0
-    missed_detections = 0
-    false_alarms = 0
-
-    stroke_test_set = DatasetHelper.load_archive("res/set_3/stroke_test.tar.gz", 0)
-    # stroke_test_set = DatasetHelper.load_data("res/set_2/stroke/test")
-    for sample in stroke_test_set:
-        if mlperc.classify(sample):
-            missed_detections += 1
-        else:
-            correct_decisions += 1
-
-    healthy_test_set = DatasetHelper.load_archive("res/set_3/healthy_test.tar.gz", 0)
-    # healthy_test_set = DatasetHelper.load_data("res/set_2/healthy/test")
-    for sample in healthy_test_set:
-        if mlperc.classify(sample):
-            correct_decisions += 1
-        else:
-            false_alarms += 1
-
-    total = (len(healthy_test_set) + len(stroke_test_set))
-    correct_decisions /= total
-    missed_detections /= total
-    false_alarms /= total
-    print("Total {} test samples.\nCorrect decisions:{} false alarms:{} missed detections:{}".format(total,
-                                                                                                     correct_decisions,
-                                                                                                     false_alarms,
-                                                                                                     missed_detections))
 
 
 def autoencoder_classification_test():
@@ -177,7 +73,7 @@ def autoencoder_classification_test():
     """
     Carico il dataset. Uso due piccoli helper definiti sopra
     """
-    training_set, training_labels, test_set, test_labels = DatasetLoader.__load_set2()
+    training_set, training_labels, test_set, test_labels = DatasetLoader.set2()
 
     """
     Addestro l'autoencoder sui dati di cervello sano: 128 è il batch size, dove batch è il training batch
@@ -187,7 +83,7 @@ def autoencoder_classification_test():
     """
     Carico il dataset con stroke
     """
-    stroke_set = DatasetHelper.load_data("res/set_2/stroke/training")
+    stroke_set = DatasetHelper.load_data("res/datasets/set_2/stroke/training")
 
     """
     Versione con loss come metrica di bontà
