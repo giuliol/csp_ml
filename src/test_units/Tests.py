@@ -43,7 +43,7 @@ def mlp_classification_test_with_symmetry_features():
     #       symmetry_64_16_multi_slice_4_and_5.dat  ###   trained on (set 4 and 5)
     #
 
-    mlperc = mlp.MultilayerPerceptron.load_folder("res/saved_nns/symmetry_64_16_multi_slice_4_and_5")
+    mlperc = mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/symmetry_64_16_multi_slice_4_and_5")
 
     """
     Valuto le prestazioni e calcolo dati per curva ROC.

@@ -2,7 +2,7 @@ import xml.etree.cElementTree as ET
 import xml
 
 
-def create_topology_xml(name, visible_layers, *hidden_layers):
+def create_topology_xml(root, name, symmetry, visible_layers, *hidden_layers):
     topology = ET.Element("topology")
     vls = ET.SubElement(topology, "visible_layers")
     ET.SubElement(vls, "input_layer").text = "%d" % visible_layers[0]
@@ -13,8 +13,10 @@ def create_topology_xml(name, visible_layers, *hidden_layers):
     for hl in hidden_layers:
         ET.SubElement(hls, "hidden_layer").text = "%d" % hl
 
+    ET.SubElement(topology, "symmetry").text = "%s" % (symmetry == 1)
+
     tree = ET.ElementTree(topology)
-    tree.write("userspace/saved_nns/{}/{}.xml".format(name, name))
+    tree.write("{}userspace/saved_nns/{}/{}.xml".format(root, name, name))
 
 
 def parse_topology_xml(filepath):
@@ -27,4 +29,5 @@ def parse_topology_xml(filepath):
     for h in hidden.iter('hidden_layer'):
         hidden_layers.append(int(h.text))
 
-    return visible_layers, hidden_layers
+    symmetry = (root.find('symmetry').text == 'True')
+    return visible_layers, hidden_layers, symmetry

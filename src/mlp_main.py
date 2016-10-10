@@ -34,25 +34,22 @@ def __self_test():
     test_mlp(mlperc, healthy_test_set, stroke_test_set)
 
 
-# TODO Controllare che non esista name
-def train_new(name, visible_layers, hidden_layers, healthy_training, healthy_test, stroke_training, stroke_test,
-              epochs):
-    mlperc = mlp.MultilayerPerceptron(visible_layers[0], visible_layers[1], *hidden_layers)
-    training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
-        healthy_training,
-        healthy_test,
-        stroke_training,
-        stroke_test)
+def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *hidden_layers):
+    training_set, training_labels = DatasetLoader.load_archives_training(
+        healthy_training, stroke_training, symmetry)
+    input_layer_size = training_set.shape[1]
+    mlperc = mlp.MultilayerPerceptron(input_layer_size, 2, *hidden_layers)
 
     mlperc.train(training_set, training_labels, epochs)
     try:
-        os.mkdir("userspace/saved_nns/{}/".format(name))
+        os.mkdir("{}userspace/saved_nns/{}/".format(root, name))
     except FileExistsError:
         print("Folder already exists")
-    xml_tools.create_topology_xml(name, visible_layers, *hidden_layers)
-    mlperc.save("userspace/saved_nns/{}/{}.dat".format(name, name))
+    xml_tools.create_topology_xml(root, name, symmetry, [input_layer_size, 2], *hidden_layers)
+    mlperc.save("{}userspace/saved_nns/{}/{}.dat".format(root, name, name))
 
 
+# TODO Guarda simmetria e implementa
 def test_existing(name, healthy_test, stroke_test):
     mlperc = mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/{}".format(name))
     stroke_test_set = DatasetHelper.load_archive(stroke_test, 1)
@@ -62,7 +59,8 @@ def test_existing(name, healthy_test, stroke_test):
 
 def classify(nn_filepath, sample_filepath):
     mlperc = mlp.MultilayerPerceptron.load_folder(nn_filepath)
-    sample = DatParser.parse_file(sample_filepath, 1)
+    symmetry = mlperc.uses_symmetry_features()
+    sample = DatParser.parse_file(sample_filepath, symmetry)
     out = mlperc.classify(sample, 1)
     mlperc.destroy()
     return out

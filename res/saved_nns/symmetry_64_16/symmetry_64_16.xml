@@ -1,0 +1,11 @@
+<topology>
+    <visible_layers>
+        <input_layer>494</input_layer>
+        <output_layer>2</output_layer>
+    </visible_layers>
+    <hidden_layers>
+        <hidden_layer>64</hidden_layer>
+        <hidden_layer>16</hidden_layer>
+    </hidden_layers>
+    <symmetry>True</symmetry>
+</topology>

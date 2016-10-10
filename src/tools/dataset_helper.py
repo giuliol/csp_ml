@@ -33,6 +33,7 @@ class DatasetHelper:
         :return:
         """
         char_set = string.ascii_uppercase + string.digits
+        import os
         with tarfile.open(filename) as tar:
             path = "tmp/{}/".format(''.join(random.sample(char_set * 6, 6)))
             tar.extractall(path)
@@ -66,13 +67,13 @@ class DatasetHelper:
                 if symmetry:
                     dataset = DatParser.parse_file_and_compute_symmetry(filepath)
                 else:
-                    dataset = DatParser.parse_file(filepath)
+                    dataset = DatParser.parse_file(filepath, 0)
                 first = False
             else:
                 if symmetry:
                     dataset = np.row_stack((dataset, DatParser.parse_file_and_compute_symmetry(filepath)))
                 else:
-                    dataset = np.row_stack((dataset, DatParser.parse_file(filepath)))
+                    dataset = np.row_stack((dataset, DatParser.parse_file(filepath, 0)))
 
         return dataset
 
@@ -98,6 +99,30 @@ class DatasetHelper:
 class DatasetLoader:
     def __init__(self):
         dummy = 0
+
+    @staticmethod
+    def load_archives_training(healthy_training_filepath, stroke_training_filepath, symmetry):
+        print("healthy training set {}\nstroke training set {}".format(
+            healthy_training_filepath,
+            stroke_training_filepath
+        ))
+
+        healthy_training_set, healthy_training_labels = DatasetHelper.load_archive(
+            healthy_training_filepath, symmetry), \
+                                                        DatasetHelper.generate_labels(
+                                                            700,
+                                                            DatasetHelper.LABEL_HEALTHY)
+
+        stroke_training_set, stroke_training_labels = DatasetHelper.load_archive(
+            stroke_training_filepath, symmetry), \
+                                                      DatasetHelper.generate_labels(
+                                                          700,
+                                                          DatasetHelper.LABEL_STROKE)
+
+        training_set = np.row_stack((healthy_training_set, stroke_training_set))
+
+        training_labels = np.row_stack((healthy_training_labels, stroke_training_labels))
+        return training_set, training_labels
 
     @staticmethod
     def load_archives(healthy_training_filepath, healthy_test_filepath, stroke_training_filepath, stroke_test_filepath):

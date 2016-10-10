@@ -8,6 +8,14 @@ from src.tools import xml_tools
 class MultilayerPerceptron:
     input_layer = None
 
+    symmetry = False
+
+    def set_symmetry(self, symm):
+        self.symmetry = symm
+
+    def uses_symmetry_features(self):
+        return self.symmetry
+
     def __init__(self, features, classes, *layers_size):
         """
         MultilayerPerceptron class constructor.
@@ -103,8 +111,9 @@ class MultilayerPerceptron:
         :return:
         """
         name = os.path.basename(folder)
-        visible_layers, hidden_layers = xml_tools.parse_topology_xml("{}/{}.xml".format(folder, name))
+        visible_layers, hidden_layers, symmetry = xml_tools.parse_topology_xml("{}/{}.xml".format(folder, name))
         out = MultilayerPerceptron(int(visible_layers[0]), int(visible_layers[1]), *hidden_layers)
+        out.set_symmetry(symmetry)
         out.load("{}/{}.dat".format(folder, name))
         return out
 
