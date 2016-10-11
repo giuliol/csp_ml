@@ -113,14 +113,16 @@ def upload_file():
 
         nn_filepath = "{}userspace/saved_nns/{}".format(root, nn_name)
 
-        if not mlp_wrapper.classify(nn_filepath, f.filename):
+        print(
+            "mlp_wrapper.classify(nn_filepath, f.filename) = {}".format(mlp_wrapper.classify(nn_filepath, f.filename)))
+        if mlp_wrapper.classify(nn_filepath, f.filename):
             res = "STROKE"
             col = "red"
         else:
             res = "HEALTHY"
             col = "green"
 
-        stroke, healthy = mlp_wrapper.score(nn_filepath, f.filename)
+        healthy, stroke = mlp_wrapper.score(nn_filepath, f.filename)
         os.remove(f.filename)
 
         content = Markup(

@@ -90,7 +90,7 @@ class DatasetHelper:
         :param label: Ground truth, can be either "LABEL_STROKE" or "LABEL_HEALTHY" (static constants of this class)
         :return: The labels tensor.
         """
-        if label == DatasetHelper.LABEL_HEALTHY:
+        if label == DatasetHelper.LABEL_STROKE:
             return np.column_stack((np.zeros((samples, 1)), np.ones((samples, 1))))
         else:
             return np.column_stack((np.ones((samples, 1)), np.zeros((samples, 1))))

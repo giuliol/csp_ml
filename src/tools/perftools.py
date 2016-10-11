@@ -19,14 +19,14 @@ def test_mlp(mlperc, healthy_test_set, stroke_test_set):
     for i, THRESH in enumerate(thresholds):
 
         for sample in stroke_test_set:
-            if mlperc.classify(sample, THRESH):
+            if not mlperc.classify(sample, THRESH):
                 false_negatives[i] += 1
             else:
                 correct_decisions[i] += 1
                 true_positives[i] += 1
 
         for sample in healthy_test_set:
-            if mlperc.classify(sample, THRESH):
+            if not mlperc.classify(sample, THRESH):
                 correct_decisions[i] += 1
                 true_negatives[i] += 1
             else:
