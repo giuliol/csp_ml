@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="- implementato &quot;evaluate&quot;&#10;&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/classification_result.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_existing.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/nn_exists_error.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/nn_not_exists_error.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/mlp_main.py" afterPath="$PROJECT_DIR$/src/mlp_wrapper.py" />
+    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="- Refactoring vario per riordinare&#10;- grafica evaluate&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/templates/trained.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/prova/checkpoint" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/prova/prova.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/prova/prova.dat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/prova/prova.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_da_gui/checkpoint" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_da_gui/test_da_gui.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_da_gui/test_da_gui.dat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_da_gui/test_da_gui.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_senza_symm/checkpoint" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_senza_symm/test_senza_symm.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_senza_symm/test_senza_symm.dat.meta" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/userspace/saved_nns/test_senza_symm/test_senza_symm.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/web/templates/evaluate_existing.html" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_results.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mlp_wrapper.py" afterPath="$PROJECT_DIR$/src/mlp_wrapper.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/static/brain.svg" afterPath="$PROJECT_DIR$/src/web/static/brain.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/index.html" afterPath="$PROJECT_DIR$/src/web/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/train_new_network.html" afterPath="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/upload_sample.html" afterPath="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/webapp.py" afterPath="$PROJECT_DIR$/src/web/webapp.py" />
     </list>
     <ignored path="CSP_ML.iws" />
@@ -33,11 +44,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="webapp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webapp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/web/webapp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+            <state relative-caret-position="224">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -45,87 +56,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate_existing_nn.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate_existing.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nn_not_exists_error.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/web/templates/nn_not_exists_error.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nn_exists_error.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/web/templates/nn_exists_error.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="29" column="128" selection-start-line="29" selection-start-column="128" selection-end-line="29" selection-end-column="128" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mlp_wrapper.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mlp_wrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mlp_wrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="880">
+              <caret line="80" column="91" selection-start-line="80" selection-start-column="91" selection-end-line="80" selection-end-column="91" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="perftools.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tools/perftools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1488">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mlp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#244#1556#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -148,9 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/common/simulator_data_parser.py" />
-        <option value="$PROJECT_DIR$/src/ml/notebook_sandbox.ipynb" />
-        <option value="$PROJECT_DIR$/src/ml/tentativo_ml.py" />
         <option value="$PROJECT_DIR$/src/test_units/test.ipynb" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ml/test.ipynb" />
@@ -189,16 +124,19 @@
         <option value="$PROJECT_DIR$/src/test_units/Tests.py" />
         <option value="$PROJECT_DIR$/src/tools/perftools.py" />
         <option value="$PROJECT_DIR$/src/mlp_main.py" />
-        <option value="$PROJECT_DIR$/src/web/templates/index.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
-        <option value="$PROJECT_DIR$/src/mlp_wrapper.py" />
         <option value="$PROJECT_DIR$/src/web/templates/classification_result.html" />
         <option value="$PROJECT_DIR$/src/web/templates/nn_exists_error.html" />
         <option value="$PROJECT_DIR$/src/web/templates/nn_not_exists_error.html" />
         <option value="$PROJECT_DIR$/src/web/templates/evaluate_existing.html" />
+        <option value="$PROJECT_DIR$/src/web/static/brain.svg" />
+        <option value="$PROJECT_DIR$/src/mlp_wrapper.py" />
+        <option value="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
         <option value="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/trained.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/single_panel.html" />
         <option value="$PROJECT_DIR$/src/web/webapp.py" />
+        <option value="$PROJECT_DIR$/src/web/templates/index.html" />
       </list>
     </option>
   </component>
@@ -280,6 +218,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="userspace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saved_nns" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -324,6 +280,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_units" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CSP_ML" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ml" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -364,17 +374,17 @@
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/saved_nns" />
+      <recent name="$PROJECT_DIR$/res/dummy" />
+      <recent name="$PROJECT_DIR$/res/dummy_set/test" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res/datasets" />
       <recent name="$PROJECT_DIR$/src/web" />
       <recent name="$PROJECT_DIR$/src/web/templates" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res/saved_nns" />
-      <recent name="$PROJECT_DIR$/res/dummy" />
-      <recent name="$PROJECT_DIR$/res/dummy_set/test" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Webapp">
@@ -779,7 +789,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476114656752</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="- Refactoring vario per riordinare&#10;- grafica evaluate&#10;">
+      <created>1476180368291</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1476180368291</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -864,7 +881,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="-Refactoring&#10;-aggiunto flatten() del parser, in modo che lavori solo su reali" />
     <MESSAGE value="-rimosso pyc&#10;-aggiunto src giusti" />
     <MESSAGE value="-refactoring e piccole modifiche&#10;-helper per dataset interi" />
     <MESSAGE value="-Adattato una test unit, sembra andare senza errori sul testset dummy." />
@@ -889,7 +905,8 @@
     <MESSAGE value="-Un po' di refactoring&#10;-Aggiunta &quot;gui&quot; su webapp" />
     <MESSAGE value="-Migliorata gui su webapp" />
     <MESSAGE value="- Refactoring, ce ne sarà tanto altro da fare&#10;- Implementata scelta nn sulla classificazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring, ce ne sarà tanto altro da fare&#10;- Implementata scelta nn sulla classificazione" />
+    <MESSAGE value="- Refactoring vario per riordinare&#10;- grafica evaluate&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring vario per riordinare&#10;- grafica evaluate&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -897,22 +914,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="21" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/static/js/custom-scripts.js" />
-    <entry file="file://$PROJECT_DIR$/src/web/static/js/jquery-1.10.2.js" />
-    <entry file="file://$PROJECT_DIR$/src/web/static/js/bootstrap.min.js" />
     <entry file="file://$PROJECT_DIR$/src/web/static/js/dataTables/dataTables.bootstrap.css" />
     <entry file="file://$PROJECT_DIR$/src/web/static/js/dataTables/dataTables.bootstrap.js" />
     <entry file="file://$PROJECT_DIR$/src/web/static/js/dataTables/jquery.dataTables.js" />
@@ -1009,26 +1015,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/simulator_data_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userspace/saved_nns/test_senza_symmetry/test_senza_symmetry.xml" />
     <entry file="file://$PROJECT_DIR$/userspace/saved_nns/symmetry_64_16/symmetry_64_16.xml" />
     <entry file="file://$PROJECT_DIR$/userspace/saved_nns/symmetry_64_16_multi_slice/symmetry_64_16_multi_slice.xml" />
     <entry file="file://$PROJECT_DIR$/userspace/saved_nns/test_da_gui/test_da_gui.xml" />
     <entry file="file://$PROJECT_DIR$/userspace/saved_nns/symmetry_64_16_multi_slice_4_and_5/symmetry_64_16_multi_slice_4_and_5.xml" />
-    <entry file="file://$PROJECT_DIR$/src/tools/xml_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/saved_nns/symmetry_64_16/symmetry_64_16.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1054,76 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="336" column="59" selection-start-line="336" selection-start-column="59" selection-end-line="336" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/perftools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/upload_sample.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/train_new_network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mlp_wrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="29" column="128" selection-start-line="29" selection-start-column="128" selection-end-line="29" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/classification_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/templates/nn_exists_error.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1140,7 +1061,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing.html">
+    <entry file="file://$PROJECT_DIR$/src/web/static/brain.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="3583" selection-start-line="6" selection-start-column="3583" selection-end-line="6" selection-end-column="3583" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/upload_sample.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/train_new_network.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="120" selection-start-line="17" selection-start-column="120" selection-end-line="17" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_results.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
@@ -1148,20 +1093,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/classification_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/single_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/trained.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="15" column="80" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="80" />
+          <caret line="15" column="90" selection-start-line="15" selection-start-column="90" selection-end-line="15" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/web/webapp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
+        <state relative-caret-position="224">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/dataset_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5296">
+          <caret line="336" column="59" selection-start-line="336" selection-start-column="59" selection-end-line="336" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/simulator_data_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ml/autoencoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/xml_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ml/mlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/perftools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1504">
+          <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mlp_wrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="80" column="91" selection-start-line="80" selection-start-column="91" selection-end-line="80" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+            <element signature="e#244#1556#0" expanded="false" />
           </folding>
         </state>
       </provider>

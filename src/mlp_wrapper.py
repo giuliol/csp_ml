@@ -35,6 +35,17 @@ def __self_test():
 
 
 def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *hidden_layers):
+    """
+    Train new neural network
+    :param root: root path (i.e., where userspace/ folder is)
+    :param name: neural network name (a folder with this name will be created)
+    :param healthy_training: path to healthy training set archive
+    :param stroke_training:  path to stroke training set archive
+    :param epochs: training epochs
+    :param symmetry: uses symmetry features
+    :param hidden_layers: list of integers describing the sizes of the hidden layers
+    :return:
+    """
     training_set, training_labels = DatasetLoader.load_archives_training(
         healthy_training, stroke_training, symmetry)
     input_layer_size = training_set.shape[1]
@@ -46,12 +57,20 @@ def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *
     except FileExistsError:
         print("Folder already exists")
     xml_tools.create_topology_xml(root, name, symmetry, [input_layer_size, 2], *hidden_layers)
-    mlperc.destroy()
     mlperc.save("{}userspace/saved_nns/{}/{}.dat".format(root, name, name))
+    mlperc.destroy()
 
 
-# TODO Guarda simmetria e implementa
-def test_existing_nn(root, name, healthy_test, stroke_test):
+def evaluate_existing_nn(root, name, healthy_test, stroke_test):
+    """
+    Evaluates an existing neural network and computes the ROC curve and the auc figure
+    :param root: root path (i.e., where userspace/ folder is)
+    :param name: neural network name (the related folder  must exist)
+    :param healthy_test: path to healthy test set archive
+    :param stroke_test: path to stroke test set archive
+    :return: two values: auc, figure    where auc is the area under the ROC curve, and figure is the path of
+             the generated png of the ROC curve
+    """
     dir = "static/"
     files = os.listdir(dir)
 
@@ -69,6 +88,12 @@ def test_existing_nn(root, name, healthy_test, stroke_test):
 
 
 def check_exists_nn(root, nn_name):
+    """
+    Check if, given a name, the related folder exists
+    :param root: root path (i.e., where userspace/ folder is)
+    :param name: neural network name
+    :return: True if it exists
+    """
     names = [name for name in os.listdir(root + "userspace/saved_nns/")
              if os.path.isdir(os.path.join(root + "userspace/saved_nns/", name))]
 
@@ -80,6 +105,12 @@ def check_exists_nn(root, nn_name):
 
 
 def classify(nn_filepath, sample_filepath):
+    """
+    Classifies a given sample, using the neural network with the provided name
+    :param nn_filepath:
+    :param sample_filepath:
+    :return: 1 or 0 (classification result)
+    """
     mlperc = mlp.MultilayerPerceptron.load_folder(nn_filepath)
     symmetry = mlperc.uses_symmetry_features()
     sample = DatParser.parse_file(sample_filepath, symmetry)

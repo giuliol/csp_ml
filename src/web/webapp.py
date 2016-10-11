@@ -10,11 +10,7 @@ root = "../../"
 
 @app.route('/')
 def index():
-    img = """
-    <object data="static/brain.svg" type="image/svg+xml" height="80ems">
-    </object>
-    """
-    return render_template('index.html', page_inner=Markup(img))
+    return render_template('index.html')
 
 
 @app.route('/train')
@@ -49,7 +45,8 @@ def new_nn():
         os.remove(h_tr_filepath)
         os.remove(s_tr_filepath)
 
-        return render_template('index.html', train=True)
+        content = Markup(render_template('trained.html', nn_name=nn_filename))
+        return render_template('index.html', train=True, page_inner=content)
 
 
 @app.route('/evaluate')
@@ -75,11 +72,11 @@ def evaluate_existing():
         s_test_filepath = "{}tmp/{}".format(root, stroke_test_file.filename)
         stroke_test_file.save(s_test_filepath)
 
-        auc, figure = mlp_wrapper.test_existing_nn(root, nn_filename, h_test_filepath, s_test_filepath)
+        auc, figure = mlp_wrapper.evaluate_existing_nn(root, nn_filename, h_test_filepath, s_test_filepath)
 
         print("AUC: {}".format(auc))
 
-        content = Markup(render_template('evaluate_existing.html', nn_name=nn_filename, img=figure,
+        content = Markup(render_template('evaluate_results.html', nn_name=nn_filename, img=figure,
                                          healthy_set=healthy_test_file.filename,
                                          stroke_set=stroke_test_file.filename))
 
@@ -93,6 +90,8 @@ def upload_file():
     select_html = ""
     for nn in get_saved_nns():
         select_html += "<option>{}</option>".format(nn)
+
+    select_html = Markup(select_html)
 
     content = Markup(render_template('upload_sample.html', select=select_html))
 
@@ -125,8 +124,8 @@ def upload_file1():
 
 
 def get_saved_nns():
-    return [name for name in os.listdir(root + "userspace/saved_nns/")
-            if os.path.isdir(os.path.join(root + "userspace/saved_nns/", name))]
+    return [name for name in os.listdir("{}userspace/saved_nns/".format(root))
+            if os.path.isdir(os.path.join("{}userspace/saved_nns/".format(root), name))]
 
 
 if __name__ == '__main__':
