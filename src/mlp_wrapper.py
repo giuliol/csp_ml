@@ -1,37 +1,9 @@
-from src.tools.dataset_helper import DatasetHelper, DatasetLoader
+from src.tools.dataset_helpers import DatasetHelper, QuickLoader
 from src.tools import xml_tools
 from src.tools.perftools import *
 from src.ml import mlp
 import os
 from src.tools.simulator_data_parser import DatParser
-
-
-def __self_test():
-    mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
-
-    # training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
-    #     "res/datasets/set_5/healthy_training.tar.gz",
-    #     "res/datasets/set_5/healthy_test.tar.gz",
-    #     "res/datasets/set_5/stroke_training.tar.gz",
-    #     "res/datasets/set_5/stroke_test.tar.gz")
-
-    # mlperc.train(training_set, training_labels, 400)
-    # mlperc.save("res/saved_nns/symmetry_64_16_2_multi_slice_4_and_5.dat")
-    #
-    #       symmetry_64_16.dat                      ###   97% accuracy, 1.125% false alarm, trained on set_4
-    #       symmetry_64_16_multi_slice.dat          ###   98% accuracy, 0 false alarm,      trained on set_5
-    #       symmetry_64_16_multi_slice_4_and_5.dat  ###   trained on (set 4 and 5)
-
-    mlperc.load("res/saved_nns/symmetry_64_16_multi_slice_4_and_5.dat")
-
-    print("evaluating...")
-
-    stroke_test_set = DatasetHelper.load_archive("res/datasets/set_3/stroke_test.tar.gz", 1)
-    healthy_test_set = DatasetHelper.load_archive("res/datasets/set_3/healthy_test.tar.gz", 1)
-    # stroke_test_set = DatasetHelper.load_data("res/datasets/set_2/stroke/test", 1)
-    # healthy_test_set = DatasetHelper.load_data("res/datasets/set_2/healthy/test", 1)
-
-    test_mlp(mlperc, healthy_test_set, stroke_test_set)
 
 
 def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *hidden_layers):
@@ -46,7 +18,7 @@ def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *
     :param hidden_layers: list of integers describing the sizes of the hidden layers
     :return:
     """
-    training_set, training_labels = DatasetLoader.load_archives_training(
+    training_set, training_labels = QuickLoader.load_archives_training(
         healthy_training, stroke_training, symmetry)
     input_layer_size = training_set.shape[1]
     mlperc = mlp.MultilayerPerceptron(input_layer_size, 2, *hidden_layers)
@@ -117,3 +89,18 @@ def classify(nn_filepath, sample_filepath):
     out = mlperc.classify(sample, 1)
     mlperc.destroy()
     return out
+
+
+def score(nn_filepath, sample_filepath):
+    """
+    Returns the scores for a given sample, using the neural network with the provided name
+    :param nn_filepath:
+    :param sample_filepath:
+    :return: the scores
+    """
+    mlperc = mlp.MultilayerPerceptron.load_folder(nn_filepath)
+    symmetry = mlperc.uses_symmetry_features()
+    sample = DatParser.parse_file(sample_filepath, symmetry)
+    scores = mlperc.score(sample)
+    mlperc.destroy()
+    return scores[0], scores[1]

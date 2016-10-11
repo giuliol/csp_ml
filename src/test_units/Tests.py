@@ -1,6 +1,6 @@
 from src.ml import autoencoder, mlp
-from src.tools.dataset_helper import DatasetHelper
-from src.tools.dataset_helper import DatasetLoader
+from src.tools.dataset_helpers import DatasetHelper
+from src.tools.dataset_helpers import QuickLoader
 from src.tools.perftools import *
 
 
@@ -73,7 +73,7 @@ def autoencoder_classification_test():
     """
     Carico il dataset. Uso due piccoli helper definiti sopra
     """
-    training_set, training_labels, test_set, test_labels = DatasetLoader.set2()
+    training_set, training_labels, test_set, test_labels = QuickLoader.set2()
 
     """
     Addestro l'autoencoder sui dati di cervello sano: 128 è il batch size, dove batch è il training batch

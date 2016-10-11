@@ -22,24 +22,25 @@ STRUTTURA PROGETTO:
             set_5/. .   .   .   - come quarto, ma con variabilità su slice Zubal.
             austin_test/.   .   - primo test con due slice prese da AustinMan
 
-    user_uploads/
+    userspace/
+        saved_nns/. .   .   .   - dove vengono salvate le reti neurali create via web
 
-    README                  - questo file
-    TODO                    - cose da aggiungere
+    README. .   .   .   .   .   - questo file
+    TODO.   .   .   .   .   .   - cose da aggiungere
 
 
 REQUISITI:
 
 (Alcuni dei) Pacchetti richiesti:
 
-- tensorflow.   .   .   .   . Libreria machine learning
-- tflearn.  .   .   .   .   . Wrapper per agevolare utilizzo tensorflow
-- numpy.    .   .   .   .   . Calcolo vettoriale ed altra matematica
-- xml.  .   .   .   .   .   . Generazione e parsing xml per metadati reti neurali
-- tarfile.  .   .   .   .   . Per gestire tar.gz dei dataset
-- matplotlib.   .   .   .   . Grafici (curve ROC)
-- flask.    .   .   .   .   . Webapp per interfaccia grafica
-- werkzeug. .   .   .   .   . Serve a flask per qualche motivo
+- tensorflow.   .   .   .   .   - Libreria machine learning
+- tflearn.  .   .   .   .   .   - Wrapper per agevolare utilizzo tensorflow
+- numpy.    .   .   .   .   .   - Calcolo vettoriale ed altra matematica
+- xml.  .   .   .   .   .   .   - Generazione e parsing xml per metadati reti neurali
+- tarfile.  .   .   .   .   .   - Per gestire tar.gz dei dataset
+- matplotlib.   .   .   .   .   - Grafici (curve ROC)
+- flask.    .   .   .   .   .   - Webapp per interfaccia grafica
+- werkzeug. .   .   .   .   .   - Serve a flask per qualche motivo
 
 
 QUICK START:

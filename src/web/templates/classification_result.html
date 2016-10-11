@@ -1,12 +1,47 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Using neural network: <i>{{ nn_name }}</i>
+<div class="row">
+    <div class="alert alert-info ">
+        <b>Neural network: </b><i>{{ nn_name }}</i>
     </div>
-    <div class="panel-body">
-        <div class="alert alert-info">
-            <i>{{ sample_name }}</i>
-        </div>
-        has been classified as <b><font color="{{ color }}">{{ result }}</font></b>.
+</div>
 
+<div class="row">
+
+    <div class="alert alert-info">
+        <b>Uploaded file: </b><i>{{ sample_name }}</i>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary text-center no-boder bg-color-green">
+            <div class="panel-body"><h4><b>
+                Score for HEALTHY
+            </b>
+            </h4>
+            </div>
+            <div class="panel-footer back-footer-green">
+                <b>{{ healthy_score }}</b>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary text-center no-boder bg-color-red">
+            <div class="panel-body">
+                <h4><b>
+                    Score for STROKE
+                </b>
+                </h4>
+            </div>
+            <div class="panel-footer back-footer-red">
+                <b> {{ stroke_score }}</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="alert alert-info">
+        has been classified as <b><font color="{{ color }}">{{ result }}</font></b>.
     </div>
 </div>

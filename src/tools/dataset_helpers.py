@@ -96,7 +96,7 @@ class DatasetHelper:
             return np.column_stack((np.ones((samples, 1)), np.zeros((samples, 1))))
 
 
-class DatasetLoader:
+class QuickLoader:
     def __init__(self):
         dummy = 0
 

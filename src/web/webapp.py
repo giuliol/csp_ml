@@ -91,7 +91,7 @@ def evaluate_existing():
 
 
 @app.route('/classify')
-def upload_file():
+def classify():
     select_html = ""
     for nn in get_saved_nns():
         select_html += "<option>{}</option>".format(nn)
@@ -104,14 +104,14 @@ def upload_file():
 
 
 @app.route('/sample_classifier', methods=['GET', 'POST'])
-def upload_file1():
+def upload_file():
     if request.method == 'POST':
         f = request.files['file']
         f.save(secure_filename(f.filename))
 
         nn_name = request.form['nn_name']
 
-        nn_filepath = root + "userspace/saved_nns/{}".format(nn_name)
+        nn_filepath = "{}userspace/saved_nns/{}".format(root, nn_name)
 
         if not mlp_wrapper.classify(nn_filepath, f.filename):
             res = "STROKE"
@@ -119,11 +119,13 @@ def upload_file1():
         else:
             res = "HEALTHY"
             col = "green"
+
+        stroke, healthy = mlp_wrapper.score(nn_filepath, f.filename)
         os.remove(f.filename)
 
         content = Markup(
             render_template('classification_result.html', nn_name=nn_name, sample_name=f.filename, color=col,
-                            result=res))
+                            result=res, stroke_score=stroke, healthy_score=healthy))
 
         return render_template('index.html', page_inner=content)
 

@@ -79,7 +79,7 @@ class MultilayerPerceptron:
         :param sample:
         :return: class scores as ndarray
         """
-        return np.asarray(self.model.predict([sample]))
+        return np.asarray(self.model.predict([sample])).flatten()
 
     def classify(self, sample):
         """
@@ -98,7 +98,7 @@ class MultilayerPerceptron:
         :return:
         """
         scores = self.score(sample)
-        if scores[0][0] / scores[0][1] > threshold:
+        if scores[0] / scores[1] > threshold:
             return 0
         else:
             return 1
