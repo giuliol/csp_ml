@@ -61,32 +61,40 @@
     <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
         <div id="page-inner">
+            {% if page_inner %}
             <div class="col-md-6">
+                {{ page_inner }}
+                {% else %}
+                <div class="col-md-3">
 
-                {% if page_inner %} {{ page_inner }} {% else %}
-                <object data="static/brain.svg" type="image/svg+xml" height="160ems">{% endif %}
-
-                </object>
+                    <div class="panel panel-primary text-center no-boder bg-color-green">
+                        <div class="panel-body">
+                            <h4><b>
+                                <object data="static/brain.svg" type="image/svg+xml" height="160ems"></object>
+                            </b>
+                            </h4>
+                        </div>
+                    </div>
+                    {% endif %}
             </div>
-
         </div>
-        <!-- /. PAGE INNER  -->
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. PAGE WRAPPER  -->
-</div>
-<!-- /. WRAPPER  -->
-<!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
-<!-- Bootstrap Js -->
-<script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }} "></script>
-<!-- Metis Menu Js -->
-<script src="{{ url_for('static', filename='js/jquery.metisMenu.js') }} "></script>
-<!-- Morris Chart Js -->
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
+    <!-- Bootstrap Js -->
+    <script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }} "></script>
+    <!-- Metis Menu Js -->
+    <script src="{{ url_for('static', filename='js/jquery.metisMenu.js') }} "></script>
+    <!-- Morris Chart Js -->
 
-<script src="{{ url_for('static', filename='js/morris/morris.js') }} "></script>
-<!-- Custom Js -->
-<script src="{{ url_for('static', filename='js/custom-scripts.js') }} "></script>
+    <script src="{{ url_for('static', filename='js/morris/morris.js') }} "></script>
+    <!-- Custom Js -->
+    <script src="{{ url_for('static', filename='js/custom-scripts.js') }} "></script>
 
 
 </body>

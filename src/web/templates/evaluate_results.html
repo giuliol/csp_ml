@@ -1,4 +1,11 @@
-<div class="panel panel-info">
+<style>
+img.resize{
+   max-width:100%;
+   max-height:100%;
+}
+
+</style>
+<div class="panel panel-primary">
     <div class="panel-heading">
         Evaluating "{{ nn_name }}"
     </div>
@@ -10,7 +17,7 @@
             Stroke test set: <i>{{ stroke_set }}</i>
         </div>
         <div class="alert alert-default">
-            <img src={{ img }}>
+            <img src={{ img }} class="resize">
         </div>
 
     </div>

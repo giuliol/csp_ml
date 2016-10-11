@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="- Refactoring &#10;- README aggiornato&#10;">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tools/dataset_helper.py" afterPath="$PROJECT_DIR$/src/tools/dataset_helpers.py" />
+    <list default="true" id="13721dd0-97f7-439d-b34a-8074fee36b86" name="Default" comment="- Refactoring &#10;- Grafica web&#10;- Aggiunti punteggi score&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ml/mlp.py" afterPath="$PROJECT_DIR$/src/ml/mlp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mlp_wrapper.py" afterPath="$PROJECT_DIR$/src/mlp_wrapper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test_units/Tests.py" afterPath="$PROJECT_DIR$/src/test_units/Tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/perftools.py" afterPath="$PROJECT_DIR$/src/tools/perftools.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/classification_result.html" afterPath="$PROJECT_DIR$/src/web/templates/classification_result.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/evaluate_results.html" afterPath="$PROJECT_DIR$/src/web/templates/evaluate_results.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/index.html" afterPath="$PROJECT_DIR$/src/web/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/train_new_network.html" afterPath="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/trained.html" afterPath="$PROJECT_DIR$/src/web/templates/trained.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/templates/upload_sample.html" afterPath="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/webapp.py" afterPath="$PROJECT_DIR$/src/web/webapp.py" />
     </list>
     <ignored path="CSP_ML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,14 +41,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mlp_wrapper.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mlp_wrapper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mlp_wrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
+            <state relative-caret-position="703">
               <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train_new_network.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/templates/train_new_network.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_results.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_results.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evaluate_existing_nn.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,21 +136,21 @@
         <option value="$PROJECT_DIR$/src/web/templates/nn_not_exists_error.html" />
         <option value="$PROJECT_DIR$/src/web/templates/evaluate_existing.html" />
         <option value="$PROJECT_DIR$/src/web/static/brain.svg" />
-        <option value="$PROJECT_DIR$/src/web/templates/trained.html" />
         <option value="$PROJECT_DIR$/src/web/templates/single_panel.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/evaluate_results.html" />
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/src/tools/dataset_helper.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/src/tools/perftools.py" />
         <option value="$PROJECT_DIR$/src/web/webapp.py" />
         <option value="$PROJECT_DIR$/src/ml/mlp.py" />
-        <option value="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
         <option value="$PROJECT_DIR$/src/web/templates/classification_result.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
-        <option value="$PROJECT_DIR$/src/web/templates/index.html" />
         <option value="$PROJECT_DIR$/src/mlp_wrapper.py" />
+        <option value="$PROJECT_DIR$/src/web/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/upload_sample.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/trained.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/train_new_network.html" />
+        <option value="$PROJECT_DIR$/src/web/templates/evaluate_results.html" />
       </list>
     </option>
   </component>
@@ -782,7 +806,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476197907377</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="- Refactoring &#10;- Grafica web&#10;- Aggiunti punteggi score&#10;">
+      <created>1476201379092</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1476201379092</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -867,7 +898,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="-Adattato una test unit, sembra andare senza errori sul testset dummy." />
     <MESSAGE value="-Testato ed implementata classe Autoencoder" />
     <MESSAGE value="-Modificato per leggere mag. e fase&#10;-gitignore" />
     <MESSAGE value="-aggiunta classificazione&#10;-sembra funzionare" />
@@ -892,7 +922,8 @@
     <MESSAGE value="- Refactoring vario per riordinare&#10;- grafica evaluate&#10;" />
     <MESSAGE value="- Refactoring sulla webapp&#10;- Aggiunta un po' di documentazione&#10;" />
     <MESSAGE value="- Refactoring &#10;- README aggiornato&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring &#10;- README aggiornato&#10;" />
+    <MESSAGE value="- Refactoring &#10;- Grafica web&#10;- Aggiunti punteggi score&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring &#10;- Grafica web&#10;- Aggiunti punteggi score&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1037,14 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/trained.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/simulator_data_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
@@ -1070,14 +1093,6 @@
           <folding>
             <element signature="e#0#35#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,46 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/train_new_network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/upload_sample.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="66" column="80" selection-start-line="66" selection-start-column="80" selection-end-line="66" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/templates/classification_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/webapp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -1195,13 +1170,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/upload_sample.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/classification_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="14" selection-start-line="16" selection-start-column="7" selection-end-line="25" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mlp_wrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
+        <state relative-caret-position="703">
           <caret line="104" column="16" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="16" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/trained.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_existing_nn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/train_new_network.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/templates/evaluate_results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
