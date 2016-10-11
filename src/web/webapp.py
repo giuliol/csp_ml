@@ -1,7 +1,7 @@
+import os
 from flask import Flask, render_template, request, Markup
 from werkzeug import secure_filename
 from src import mlp_wrapper
-import os
 
 app = Flask(__name__)
 
