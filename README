@@ -2,32 +2,49 @@
 
 STRUTTURA PROGETTO:
 
-    res/
-        dummy/              - dataset dummy, usato in qualche test preliminare
-        saved_nns/          - reti neurali salvate
-        set_1/              - primo dataset, solo rumore AWG a valle del MOM.
-        set_2/              - secondo dataset,  AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop
-        set_3/              - terzo dataset, AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop ed
-                              errore su cerchio antenne
-        set_4/
-        set_5/
-        user_uploads/
-        austin_test/
     src/
-        ml/                 - classi per machine learning
-        test_units/         -
-        tools/              - utilità varie, gestire dataset
-        web/                - webapp, interfaccia grafica
-        mlp_main.py
+        ml/.    .   .   .   .   - classi per machine learning
+        test_units/ .   .   .   - tests
+        tools/. .   .   .   .   - utilità varie, gestire dataset
+        web/.   .   .   .   .   - webapp, interfaccia grafica
+        mlp_wrapper.py
         main.py
+
+    res/
+        saved_nns/. .   .   .   - reti neurali salvate
+        datasets/
+            dummy/. .   .   .   - dataset dummy, usato in qualche test preliminare
+            set_1/. .   .   .   - primo dataset, solo rumore AWG a valle del MOM.
+            set_2/. .   .   .   - secondo dataset,  AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop
+            set_3/. .   .   .   - terzo dataset, AWGN dopo MOM, errore su pos e dim dello stroke, errore su tissueprop ed
+                                  errore su cerchio antenne
+            set_4/. .   .   .   - come terzo, due volte più grande
+            set_5/. .   .   .   - come quarto, ma con variabilità su slice Zubal.
+            austin_test/.   .   - primo test con due slice prese da AustinMan
+
+    user_uploads/
+
     README                  - questo file
     TODO                    - cose da aggiungere
 
 
+REQUISITI:
+
+(Alcuni dei) Pacchetti richiesti:
+
+- tensorflow.   .   .   .   . Libreria machine learning
+- tflearn.  .   .   .   .   . Wrapper per agevolare utilizzo tensorflow
+- numpy.    .   .   .   .   . Calcolo vettoriale ed altra matematica
+- xml.  .   .   .   .   .   . Generazione e parsing xml per metadati reti neurali
+- tarfile.  .   .   .   .   . Per gestire tar.gz dei dataset
+- matplotlib.   .   .   .   . Grafici (curve ROC)
+- flask.    .   .   .   .   . Webapp per interfaccia grafica
+- werkzeug. .   .   .   .   . Serve a flask per qualche motivo
+
 
 QUICK START:
 
--Con pycharm creare run configuration con la quale lanciare webapp.py
+-Con pycharm creare run configuration con la quale lanciare webapp.py -> browser a localhost:5000
 -Oppure vedere in src/test_units/Tests.py le funzioni
 
 

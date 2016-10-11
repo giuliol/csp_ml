@@ -7,6 +7,11 @@ app = Flask(__name__)
 
 root = "../../"
 
+try:
+    os.mkdir("{}/tmp".format(root))
+except FileExistsError:
+    print("Folder already exists")
+
 
 @app.route('/')
 def index():
