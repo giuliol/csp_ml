@@ -1,0 +1,20 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Evaluate existing Neural Net
+    </div>
+    <div class="panel-body">
+        <form action="http://localhost:5000/evaluate_existing" method="POST" enctype="multipart/form-data">
+            <div>
+                Choose an existing neural network.
+                <select class="form-control" name="nn_name">
+                    {{ select }}
+                </select>
+            </div>
+            <br>
+            <br>
+            <label> Healthy test set</label> <input type="file" name="healthy_test"/><br>
+            <label> Stroke test set</label> <input type="file" name="stroke_test"/><br>
+            <input class="btn btn-default" type="submit"/><br></form>
+
+    </div>
+</div>

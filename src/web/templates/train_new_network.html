@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        New custom Neural Net
+    </div>
+    <div class="panel-body">
+        <form action="http://localhost:5000/new_neural_net" method="POST" enctype="multipart/form-data">
+            <label> Neural network name </label> <input class="form-control" name="nn_filename" placeholder="nome.dat"/>
+            <br>
+            <label> Hidden Layers</label> <br> values separated by commas!<input class="form-control"
+                                                                                 name="nn_hidden_layers"
+                                                                                 placeholder="64, 16"/>
+            <br>
+            <label> Compute symmetry features <input type="checkbox" value="True" name="symmetry"> </label>
+            <br>
+            <br>
+            <label> Healthy training set</label> <input type="file" name="healthy_training"/><br>
+            <label> Stroke training set</label> <input type="file" name="stroke_training"/><br>
+            <label> No. of training epochs </label> <input class="form-control" name="epochs" placeholder="300"/>
+
+            <input class="btn btn-default" type="submit"/><br></form>
+
+    </div>
+</div>

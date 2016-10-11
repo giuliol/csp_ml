@@ -46,11 +46,12 @@ def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *
     except FileExistsError:
         print("Folder already exists")
     xml_tools.create_topology_xml(root, name, symmetry, [input_layer_size, 2], *hidden_layers)
+    mlperc.destroy()
     mlperc.save("{}userspace/saved_nns/{}/{}.dat".format(root, name, name))
 
 
 # TODO Guarda simmetria e implementa
-def test_existing(root, name, healthy_test, stroke_test):
+def test_existing_nn(root, name, healthy_test, stroke_test):
     dir = "static/"
     files = os.listdir(dir)
 
@@ -67,6 +68,15 @@ def test_existing(root, name, healthy_test, stroke_test):
     return test_mlp(mlperc, healthy_test_set, stroke_test_set)
 
 
+def check_exists_nn(root, nn_name):
+    names = [name for name in os.listdir(root + "userspace/saved_nns/")
+             if os.path.isdir(os.path.join(root + "userspace/saved_nns/", name))]
+
+    for name in names:
+        if nn_name == name:
+            return True
+
+    return False
 
 
 def classify(nn_filepath, sample_filepath):
@@ -76,15 +86,3 @@ def classify(nn_filepath, sample_filepath):
     out = mlperc.classify(sample, 1)
     mlperc.destroy()
     return out
-
-# __self_test()
-
-# train_new("test", [494, 2], [64, 16, 2],
-#           "res/datasets/set_5/healthy_training.tar.gz",
-#           "res/datasets/set_5/healthy_test.tar.gz",
-#           "res/datasets/set_5/stroke_training.tar.gz",
-#           "res/datasets/set_5/stroke_test.tar.gz",
-#           2
-#           )
-
-# mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/test")
