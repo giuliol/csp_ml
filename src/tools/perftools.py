@@ -52,10 +52,10 @@ def plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives
     plt.ylabel("True Positives")
 
     auc = 0
-    true_positives = true_positives[::-1]
-    false_positives = false_positives[::-1]
-    thresholds = thresholds[::-1]
-    correct_decisions = correct_decisions[::-1]
+    # true_positives = true_positives[::-1]
+    # false_positives = false_positives[::-1]
+    # thresholds = thresholds[::-1]
+    # correct_decisions = correct_decisions[::-1]
 
     for i, tp in enumerate(true_positives[1:]):
         rec = (false_positives[i + 1] - false_positives[i]) * (true_positives[i])
