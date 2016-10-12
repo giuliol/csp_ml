@@ -54,7 +54,6 @@ def evaluate_existing_nn(root, name, healthy_test, stroke_test):
 
     stroke_test_set = DatasetHelper.load_archive(stroke_test, mlperc.uses_symmetry_features())
     healthy_test_set = DatasetHelper.load_archive(healthy_test, mlperc.uses_symmetry_features())
-    mlperc.destroy()
 
     return test_mlp(mlperc, healthy_test_set, stroke_test_set)
 

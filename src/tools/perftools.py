@@ -40,6 +40,7 @@ def test_mlp(mlperc, healthy_test_set, stroke_test_set):
         true_positives[i] /= len(stroke_test_set)
 
         print("threshold {}, corr.{}".format(THRESH, correct_decisions[i]))
+        mlperc.destroy()
 
     return plot_ROC(correct_decisions, false_negatives, false_positives, true_negatives, true_positives, thresholds)
 

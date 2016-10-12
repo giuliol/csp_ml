@@ -29,21 +29,21 @@ def austin_test():
 def mlp_classification_test_with_symmetry_features():
     """"""
 
-    # mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
-    # training_set, training_labels, test_set, test_labels = DatasetLoader.load_archives(
-    #     "res/datasets/set_5/healthy_training.tar.gz",
-    #     "res/datasets/set_5/healthy_test.tar.gz",
-    #     "res/datasets/set_5/stroke_training.tar.gz",
-    #     "res/datasets/set_5/stroke_test.tar.gz")
-    # mlperc.train(training_set, training_labels, 400)
-    # mlperc.save("res/saved_nns/symmetry_64_16_2_multi_slice_4_and_5.dat")
+    mlperc = mlp.MultilayerPerceptron(494, 2, 64, 16)
+    training_set, training_labels, test_set, test_labels = QuickLoader.load_archives(
+        "res/datasets/set_5/healthy_training.tar.gz",
+        "res/datasets/set_5/healthy_test.tar.gz",
+        "res/datasets/set_5/stroke_training.tar.gz",
+        "res/datasets/set_5/stroke_test.tar.gz")
+    mlperc.train(training_set, training_labels, 400)
+    mlperc.save("userspace/saved_nns/symmetry_64_16_2_multi_slice_4_and_5.dat")
     #
     #       symmetry_64_16.dat                      ###   97% accuracy, 1.125% false alarm, trained on set_4
     #       symmetry_64_16_multi_slice.dat          ###   98% accuracy, 0 false alarm,      trained on set_5
     #       symmetry_64_16_multi_slice_4_and_5.dat  ###   trained on (set 4 and 5)
     #
 
-    mlperc = mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/symmetry_64_16_multi_slice_4_and_5")
+    # mlperc = mlp.MultilayerPerceptron.load_folder("userspace/saved_nns/symmetry_64_16_multi_slice_4_and_5")
 
     """
     Valuto le prestazioni e calcolo dati per curva ROC.
