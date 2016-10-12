@@ -10,6 +10,17 @@ class MultilayerPerceptron:
 
     symmetry = False
 
+    def set_topology(self, visible, *hidden):
+        self.features = visible[0]
+        self.classes = visible[1]
+
+        self.hidden_layers = []
+        for h in hidden:
+            self.hidden_layers.append(h)
+
+    def get_topology(self):
+        return self.features, self.classes, self.hidden_layers
+
     def set_symmetry(self, symm):
         self.symmetry = symm
 
@@ -26,12 +37,16 @@ class MultilayerPerceptron:
         :param layers_size: size of hidden layers.
         """
         # Building deep neural network
+        self.features = features
+        self.classes = classes
+        self.hidden_layers = []
 
         self.nn = tflearn.input_data(shape=[None, features])
         for i, layer_size in enumerate(layers_size):
             self.nn = tflearn.fully_connected(self.nn, layer_size, activation='tanh',
                                               regularizer='L2', weight_decay=0.001)
             self.nn = tflearn.dropout(self.nn, 0.8)
+            self.hidden_layers.append(layer_size)
 
         self.softmax = tflearn.fully_connected(self.nn, classes, activation='softmax')
 
@@ -62,6 +77,10 @@ class MultilayerPerceptron:
         :param filename:
         :return:
         """
+        path = os.path.dirname(filename)
+        name = os.path.splitext(os.path.basename(filename))[0]
+
+        xml_tools.create_topology_xml(path, name, self.symmetry, [self.features, self.classes], *self.hidden_layers)
         self.model.save(filename)
 
     def load(self, filename):
@@ -112,9 +131,11 @@ class MultilayerPerceptron:
         """
         name = os.path.basename(folder)
         visible_layers, hidden_layers, symmetry = xml_tools.parse_topology_xml("{}/{}.xml".format(folder, name))
+        visible_layers = visible_layers
         out = MultilayerPerceptron(int(visible_layers[0]), int(visible_layers[1]), *hidden_layers)
         out.set_symmetry(symmetry)
         out.load("{}/{}.dat".format(folder, name))
+        out.set_topology(visible_layers, *hidden_layers)
         return out
 
     def destroy(self):

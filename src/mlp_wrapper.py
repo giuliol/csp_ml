@@ -22,13 +22,9 @@ def train_new(root, name, healthy_training, stroke_training, epochs, symmetry, *
         healthy_training, stroke_training, symmetry)
     input_layer_size = training_set.shape[1]
     mlperc = mlp.MultilayerPerceptron(input_layer_size, 2, *hidden_layers)
-
+    mlperc.set_symmetry(symmetry)
     mlperc.train(training_set, training_labels, epochs)
-    try:
-        os.mkdir("{}userspace/saved_nns/{}/".format(root, name))
-    except FileExistsError:
-        print("Folder already exists")
-    xml_tools.create_topology_xml(root, name, symmetry, [input_layer_size, 2], *hidden_layers)
+
     mlperc.save("{}userspace/saved_nns/{}/{}.dat".format(root, name, name))
     mlperc.destroy()
 
@@ -62,11 +58,11 @@ def check_exists_nn(root, nn_name):
     """
     Check if, given a name, the related folder exists
     :param root: root path (i.e., where userspace/ folder is)
-    :param name: neural network name
+    :param nn_name: neural network name
     :return: True if it exists
     """
-    names = [name for name in os.listdir(root + "userspace/saved_nns/")
-             if os.path.isdir(os.path.join(root + "userspace/saved_nns/", name))]
+    names = [name for name in os.listdir("{}userspace/saved_nns/".format(root))
+             if os.path.isdir(os.path.join("{}userspace/saved_nns/".format(root), name))]
 
     for name in names:
         if nn_name == name:
@@ -103,3 +99,22 @@ def score(nn_filepath, sample_filepath):
     scores = mlperc.score(sample)
     mlperc.destroy()
     return scores[0], scores[1]
+
+
+def get_details(root, nn_filename):
+    """
+    Returns details and topology of a neural network
+    :param root:
+    :param nn_filename
+    :return: a dictionary with keys:
+                symmetry
+    """
+
+    mlperc = mlp.MultilayerPerceptron.load_folder("{}userspace/saved_nns/{}".format(root, nn_filename))
+    out = dict()
+    out["symmetry"] = mlperc.uses_symmetry_features()
+    out["input_layer"] = mlperc.features
+    out["output_layer"] = mlperc.classes
+    out["hidden_layers"] = mlperc.hidden_layers
+    mlperc.destroy()
+    return out

@@ -62,7 +62,8 @@
     <div id="page-wrapper">
         <div id="page-inner">
             {% if page_inner %}
-            <div class="col-md-6">
+            <div class="col-md-8">
+                {%if nn_details %} {{ nn_details }} {% endif %}
                 {{ page_inner }}
                 {% else %}
                 <div class="col-md-3">
@@ -76,8 +77,8 @@
                         </div>
                     </div>
                     {% endif %}
+                </div>
             </div>
-        </div>
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->

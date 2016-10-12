@@ -44,6 +44,8 @@ def new_nn():
             content = Markup(render_template('nn_exists_error.html', nn_name=nn_filename))
             return render_template('index.html', page_inner=content)
 
+        os.mkdir("{}userspace/saved_nns/{}/".format(root, nn_filename))
+
         mlp_wrapper.train_new(root, nn_filename, h_tr_filepath,
                               s_tr_filepath, epochs, symmetry, *hidden_layers)
 
@@ -87,7 +89,8 @@ def evaluate_existing():
 
         os.remove(h_test_filepath)
         os.remove(s_test_filepath)
-        return render_template('index.html', page_inner=content, evaluate=True)
+
+        return render_template('index.html', page_inner=content, nn_details=get_nn_details(nn_filename), evaluate=True)
 
 
 @app.route('/classify')
@@ -129,12 +132,24 @@ def upload_file():
             render_template('classification_result.html', nn_name=nn_name, sample_name=f.filename, color=col,
                             result=res, stroke_score=stroke, healthy_score=healthy))
 
-        return render_template('index.html', page_inner=content)
+        return render_template('index.html', page_inner=content, nn_details=get_nn_details(nn_name))
 
 
 def get_saved_nns():
     return [name for name in os.listdir("{}userspace/saved_nns/".format(root))
             if os.path.isdir(os.path.join("{}userspace/saved_nns/".format(root), name))]
+
+
+def get_nn_details(nn_filename):
+    details = mlp_wrapper.get_details(root, nn_filename)
+
+    content = Markup(render_template('nn_details.html',
+                                     nn_name=nn_filename,
+                                     symmetry=details['symmetry'],
+                                     input_layer=details['input_layer'],
+                                     output_layer=details['output_layer'],
+                                     hidden_layers=details['hidden_layers']))
+    return content
 
 
 if __name__ == '__main__':
